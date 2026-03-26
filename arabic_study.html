@@ -1,0 +1,2260 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مذاكرة اللغة العربية - الصف الأول الثانوي الفني</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dark: #8b6914;
+  --deep: #0d1b2a;
+  --deep2: #1a2f45;
+  --deep3: #243b55;
+  --cream: #faf6ef;
+  --cream2: #f0e8d8;
+  --green: #2d6a4f;
+  --green-light: #52b788;
+  --red: #9d2235;
+  --red-light: #e05c72;
+  --blue: #1a4b7a;
+  --blue-light: #4d8cc4;
+  --purple: #5c3a8a;
+  --purple-light: #9b6fc4;
+  --text: #1a1a2e;
+  --text-muted: #555570;
+  --radius: 16px;
+  --shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+.school-badge {
+  background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(139,105,20,0.1));
+  border: 2px solid rgba(201,168,76,0.5);
+  color: var(--gold);
+  padding: 16px 32px;
+  border-radius: var(--radius);
+  font-size: clamp(16px, 3vw, 20px);
+  font-weight: 800;
+  font-family: 'Amiri', serif;
+  letter-spacing: 1.5px;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  animation: fadeDown 0.7s ease;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== SCREENS ===== */
+.screen { display:none; min-height:100vh; }
+.screen.active { display:block; }
+
+/* ===== HOME ===== */
+#home {
+  background: linear-gradient(135deg, var(--deep) 0%, var(--deep2) 50%, var(--deep3) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+#home::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(201,168,76,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.home-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.home-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.home-badge {
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold-light);
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  animation: fadeDown 0.8s ease;
+}
+
+.home-title {
+  font-family: 'Amiri', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: #fff;
+  text-align: center;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  animation: fadeDown 0.9s ease;
+}
+
+.home-title span {
+  color: var(--gold);
+  display: block;
+}
+
+.home-sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeDown 1s ease;
+}
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+  animation: fadeUp 1.1s ease;
+}
+
+.section-header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.section-header-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(201,168,76,0.3);
+}
+
+.section-header-title {
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.lesson-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: right;
+}
+
+.lesson-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.lesson-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
+  background: radial-gradient(circle, rgba(201,168,76,0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lesson-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 30px rgba(201,168,76,0.3);
+  animation: pulseGlow 1.5s infinite;
+}
+
+.lesson-card:hover::before,
+.lesson-card:active::before {
+  opacity: 1;
+  animation: ripple 0.6s ease-out;
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.card-icon.green { background: rgba(82,183,136,0.15); }
+.card-icon.gold { background: rgba(201,168,76,0.15); }
+.card-icon.blue { background: rgba(77,140,196,0.15); }
+.card-icon.red { background: rgba(224,92,114,0.15); }
+.card-icon.purple { background: rgba(155,111,196,0.15); }
+
+.card-num {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+
+.card-sections {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.tag.green { background: rgba(82,183,136,0.15); color: var(--green-light); }
+.tag.gold { background: rgba(201,168,76,0.15); color: var(--gold-light); }
+.tag.blue { background: rgba(77,140,196,0.15); color: var(--blue-light); }
+.tag.red { background: rgba(224,92,114,0.15); color: var(--red-light); }
+.tag.purple { background: rgba(155,111,196,0.15); color: var(--purple-light); }
+
+.exam-btn {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border: none;
+  border-radius: var(--radius);
+  padding: 24px 40px;
+  color: var(--deep);
+  font-family: 'Cairo', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+}
+
+.exam-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(201,168,76,0.4);
+}
+
+/* ===== LESSON PAGE ===== */
+#lesson-page {
+  background: var(--cream);
+}
+
+.lesson-nav {
+  background: var(--deep);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-back {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-back:hover { background: rgba(255,255,255,0.2); }
+
+.nav-title {
+  color: var(--gold);
+  font-family: 'Amiri', serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-progress {
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+}
+
+/* Tabs */
+.lesson-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--deep2);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.lesson-tabs::-webkit-scrollbar { display: none; }
+
+.lesson-tab {
+  padding: 14px 24px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  flex-shrink: 0;
+}
+
+.lesson-tab {
+  position: relative;
+}
+
+.lesson-tab.active {
+  color: var(--gold);
+  background: rgba(201,168,76,0.12);
+  animation: tabSlide 0.4s ease-out, pulseGlow 2s infinite;
+}
+
+.lesson-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  transition: width 0.4s ease-out;
+}
+
+.lesson-tab.active::after {
+  width: 100%;
+}
+
+.lesson-tab:hover:not(.active) {
+  color: rgba(255,255,255,0.9);
+  transform: scale(1.05);
+}
+
+/* Content panels */
+.lesson-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.lesson-content {
+  transition: all 0.4s ease-out;
+}
+
+.lesson-content.fade-out { 
+  opacity: 0.3; 
+  transform: scale(0.98); 
+}
+
+.lesson-content.fade-in { 
+  animation: fadeInSlide 0.4s ease-out; 
+}
+  top: 0;
+  right: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+
+/* Removed unused .content-panel - using .lesson-content fade classes instead */
+
+/* Reading section */
+.section-title-big {
+  font-family: 'Amiri', serif;
+  font-size: 28px;
+  color: var(--deep);
+  margin-bottom: 8px;
+  border-right: 4px solid var(--gold);
+  padding-right: 16px;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 32px;
+  padding-right: 20px;
+}
+
+.text-block {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+  line-height: 2.2;
+  font-size: 17px;
+  color: var(--text);
+  border-right: 4px solid var(--cream2);
+  font-family: 'Amiri', serif;
+}
+
+.text-block p { margin-bottom: 16px; }
+.text-block p:last-child { margin-bottom: 0; }
+
+/* Vocabulary */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s ease-out;
+}
+
+.vocab-card {
+  background: #fff;
+  animation: fadeUp 0.6s ease-out both;
+}
+
+.vocab-card:nth-child(odd) { animation-delay: 0.1s; }
+.vocab-card:nth-child(even) { animation-delay: 0.2s; }
+.vocab-card:nth-child(3n) { animation-delay: 0.3s; }
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-top: 3px solid var(--gold);
+  transition: transform 0.2s;
+}
+
+.vocab-card:hover { transform: translateY(-2px); }
+
+.vocab-word {
+  font-family: 'Amiri', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--deep);
+  margin-bottom: 8px;
+}
+
+.vocab-meaning {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Beauty section */
+.beauty-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.beauty-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.beauty-body {}
+
+.beauty-quote {
+  font-family: 'Amiri', serif;
+  font-size: 18px;
+  color: var(--deep);
+  margin-bottom: 10px;
+  line-height: 1.8;
+  border-right: 3px solid var(--gold);
+  padding-right: 12px;
+}
+
+.beauty-explain {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.beauty-type {
+  display: inline-block;
+  background: rgba(201,168,76,0.12);
+  color: var(--gold-dark);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+}
+
+/* Grammar section */
+.grammar-rule {
+  background: linear-gradient(135deg, var(--deep), var(--deep2));
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.grammar-rule-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.grammar-rule-title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.grammar-rule p {
+  line-height: 2;
+  color: rgba(255,255,255,0.85);
+  font-size: 15px;
+}
+
+.grammar-examples {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.grammar-example {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-family: 'Amiri', serif;
+  font-size: 17px;
+  color: rgba(255,255,255,0.9);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.grammar-example:last-child { border-bottom: none; }
+
+.grammar-example::before {
+  content: '•';
+  color: var(--gold);
+  font-size: 20px;
+}
+
+.grammar-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.grammar-table th {
+  background: var(--deep);
+  color: var(--gold);
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.grammar-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--cream2);
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.grammar-table tr:last-child td { border-bottom: none; }
+.grammar-table tr:hover td { background: var(--cream); }
+
+/* Quiz section */
+.quiz-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.quiz-header {
+  background: linear-gradient(135deg, var(--deep), var(--deep2));
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 28px;
+  color: #fff;
+  text-align: center;
+}
+
+.quiz-title { font-size: 22px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+.quiz-info { font-size: 14px; color: rgba(255,255,255,0.6); }
+
+.progress-bar-wrap {
+  background: rgba(255,255,255,0.1);
+  border-radius: 50px;
+  height: 6px;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  border-radius: 50px;
+  transition: width 0.4s ease;
+}
+
+.question-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+.q-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold-dark);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.q-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  font-family: 'Amiri', serif;
+}
+
+.q-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.q-option {
+  border: 2px solid var(--cream2);
+  border-radius: 10px;
+  padding: 14px 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 15px;
+  color: var(--text);
+  font-family: 'Cairo', sans-serif;
+  background: var(--cream);
+  text-align: right;
+  font-weight: 500;
+}
+
+.q-option:hover:not(.answered) { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+.q-option.selected { border-color: var(--blue); background: rgba(26,75,122,0.06); }
+.q-option.correct { border-color: var(--green); background: rgba(45,106,79,0.08); color: var(--green); font-weight: 700; }
+.q-option.wrong { border-color: var(--red); background: rgba(157,34,53,0.06); color: var(--red); }
+
+.q-explanation {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: rgba(82,183,136,0.1);
+  border-radius: 10px;
+  border-right: 4px solid var(--green-light);
+  font-size: 14px;
+  color: var(--green);
+  display: none;
+  line-height: 1.8;
+}
+
+.q-explanation.show { display: block; }
+
+.quiz-nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--deep);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 32px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+}
+
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,168,76,0.4); }
+
+.btn-secondary {
+  background: var(--deep);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 32px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover { background: var(--deep2); }
+
+/* Result */
+.result-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 48px 32px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.result-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.result-circle {
+  animation: bounceIn 0.8s ease-out, float 3s ease-in-out infinite;
+}
+
+.result-circle.excellent { 
+  background: linear-gradient(135deg, #2d6a4f, #52b788); 
+  color: #fff;
+  box-shadow: 0 0 40px rgba(82,183,136,0.6);
+}
+
+.result-circle.good { 
+  background: linear-gradient(135deg, #8b6914, #c9a84c); 
+  color: #fff;
+  box-shadow: 0 0 40px rgba(201,168,76,0.5);
+}
+
+.result-circle.weak { 
+  background: linear-gradient(135deg, #9d2235, #e05c72); 
+  color: #fff;
+  box-shadow: 0 0 40px rgba(224,92,114,0.5);
+}
+
+.result-msg { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.result-sub { color: var(--text-muted); margin-bottom: 32px; }
+
+/* ===== EXAM PAGE ===== */
+#exam-page { background: var(--cream); }
+
+.exam-nav {
+  background: linear-gradient(135deg, var(--deep), var(--deep2));
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.exam-timer {
+  background: rgba(201,168,76,0.2);
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold-light);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+}
+
+.exam-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.exam-intro {
+  background: linear-gradient(135deg, var(--deep), var(--deep2));
+  border-radius: var(--radius);
+  padding: 48px 40px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.exam-intro-icon { font-size: 60px; margin-bottom: 20px; }
+.exam-intro-title { font-family: 'Amiri', serif; font-size: 32px; color: var(--gold); margin-bottom: 12px; }
+.exam-intro-sub { color: rgba(255,255,255,0.6); margin-bottom: 32px; line-height: 1.8; font-size: 15px; }
+
+.exam-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.exam-stat { text-align: center; }
+.exam-stat-num { font-size: 36px; font-weight: 900; color: var(--gold); }
+.exam-stat-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+/* Enhanced Animations */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(201,168,76,0); }
+  100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+@keyframes tabSlide {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -468px 0; }
+  100% { background-position: 468px 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream2); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .home-title { font-size: 2rem; }
+  .lessons-grid { grid-template-columns: 1fr; }
+  .beauty-card { flex-direction: column; }
+  .exam-stats { gap: 20px; }
+}
+
+.info-box {
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.info-box-title {
+  color: var(--gold-dark);
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-box p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.summary-box {
+  background: linear-gradient(135deg, var(--deep), var(--deep2));
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.summary-title {
+  color: var(--gold);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.summary-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+}
+
+.summary-list li::before {
+  content: '✦';
+  color: var(--gold);
+  font-size: 10px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* Fixed Top-Right Logo Styles */
+.logo-header {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.top-right-logo {
+  width: 400px;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  opacity: 0.95;
+  transition: all 0.3s ease;
+}
+
+.top-right-logo:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+}
+
+@media (max-width: 600px) {
+  .logo-header {
+    top: 15px;
+    right: 15px;
+  }
+  .top-right-logo {
+    width: clamp(80px, 20vw, 120px);
+  }
+}
+
+/* No extra padding - clean top */
+.screen { 
+  padding-top: 0; 
+}
+
+.lesson-nav, .exam-nav { 
+  top: 0; 
+}
+
+</style>
+</head>
+<body>
+
+<!-- ========== HOME ========== -->
+<div id="home" class="screen active">
+    <div class="home-inner">
+    <div class="home-pattern"></div>
+    
+    <!-- Fixed Top-Right Logo -->
+    <div class="logo-header">
+      <img src="logo.png" alt="شعار مذاكرة اللغة العربية" class="top-right-logo">
+    </div>
+    
+    <div class="school-badge">
+      We Bani Suef<br>
+      الهام كامل معلم خبير لغة عربية
+    </div>
+    <div class="home-badge">الفصل الدراسي الثاني · الصف الأول الثانوي الفني</div>
+    <h1 class="home-title">مذاكرة<span>اللغة العربية</span></h1>
+
+
+    <div class="lessons-grid">
+      <div class="section-header">
+        <div class="section-header-line"></div>
+        <span class="section-header-title">أولاً — القراءة</span>
+        <div class="section-header-line"></div>
+      </div>
+
+      <div class="lesson-card" onclick="openLesson('fish')">
+        <div class="card-icon green">🐟</div>
+        <div class="card-num">الدرس الأول</div>
+        <div class="card-title">الثروة السمكية والاقتصاد القومي</div>
+        <div class="card-desc">أهمية الأسماك في مصر، مصادرها، ودور الدولة في النهوض بها</div>
+        <div class="card-sections">
+          <span class="tag green">قراءة</span>
+          <span class="tag gold">معاني</span>
+          <span class="tag blue">أسئلة</span>
+        </div>
+      </div>
+
+      <div class="lesson-card" onclick="openLesson('mercy')">
+        <div class="card-icon red">🤝</div>
+        <div class="card-num">الدرس الثاني</div>
+        <div class="card-title">التراحم بين الناس</div>
+        <div class="card-desc">قيمة الرحمة ومعناها، وصور التراحم في المجتمع</div>
+        <div class="card-sections">
+          <span class="tag green">قراءة</span>
+          <span class="tag red">جماليات</span>
+          <span class="tag gold">معاني</span>
+          <span class="tag blue">أسئلة</span>
+        </div>
+      </div>
+
+      <div class="lesson-card" onclick="openLesson('tolerance')">
+        <div class="card-icon blue">☮️</div>
+        <div class="card-num">الدرس الثالث</div>
+        <div class="card-title">صور من التسامح الفعلي</div>
+        <div class="card-desc">التسامح في الإسلام وحديث الحديبية ومعاملة أهل الكتاب</div>
+        <div class="card-sections">
+          <span class="tag green">قراءة</span>
+          <span class="tag gold">معاني</span>
+          <span class="tag blue">أسئلة</span>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-header-line"></div>
+        <span class="section-header-title">ثانياً — الأدب والنصوص</span>
+        <div class="section-header-line"></div>
+      </div>
+
+      <div class="lesson-card" onclick="openLesson('quran')">
+        <div class="card-icon gold">📖</div>
+        <div class="card-num">الدرس الأول</div>
+        <div class="card-title">التجارة الرابحة — قرآن كريم</div>
+        <div class="card-desc">سورة الصف آيات ١٠-١٣ — الإيمان والجهاد وعظيم الثواب</div>
+        <div class="card-sections">
+          <span class="tag gold">نص قرآني</span>
+          <span class="tag red">جماليات</span>
+          <span class="tag blue">أسئلة</span>
+        </div>
+      </div>
+
+      <div class="lesson-card" onclick="openLesson('poetry1')">
+        <div class="card-icon purple">✍️</div>
+        <div class="card-num">الدرس الثاني</div>
+        <div class="card-title">ابدأ بنفسك — شعر</div>
+        <div class="card-desc">قصيدة أبي الأسود الدؤلي في الحكمة والنصيحة والبدء بالنفس</div>
+        <div class="card-sections">
+          <span class="tag purple">شعر</span>
+          <span class="tag red">جماليات</span>
+          <span class="tag gold">معاني</span>
+          <span class="tag blue">أسئلة</span>
+        </div>
+      </div>
+
+      <div class="lesson-card" onclick="openLesson('poetry2')">
+        <div class="card-icon red">🌟</div>
+        <div class="card-num">الدرس الثالث</div>
+        <div class="card-title">في المدح — شعر الفرزدق</div>
+        <div class="card-desc">قصيدة الفرزدق في مدح زين العابدين علي بن الحسين</div>
+        <div class="card-sections">
+          <span class="tag purple">شعر</span>
+          <span class="tag red">جماليات</span>
+          <span class="tag gold">معاني</span>
+          <span class="tag blue">أسئلة</span>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-header-line"></div>
+        <span class="section-header-title">رابعاً — القواعد النحوية</span>
+        <div class="section-header-line"></div>
+      </div>
+
+      <div class="lesson-card" onclick="openLesson('grammar1')">
+        <div class="card-icon blue">📐</div>
+        <div class="card-num">نحو ١</div>
+        <div class="card-title">الجملة الفعلية وإعراب المضارع</div>
+        <div class="card-desc">الرفع والنصب والجزم، وأدوات كل حالة مع أمثلة تطبيقية</div>
+        <div class="card-sections">
+          <span class="tag blue">قاعدة</span>
+          <span class="tag gold">أمثلة</span>
+          <span class="tag blue">أسئلة</span>
+        </div>
+      </div>
+
+      <div class="lesson-card" onclick="openLesson('grammar2')">
+        <div class="card-icon purple">⚡</div>
+        <div class="card-num">نحو ٢</div>
+        <div class="card-title">الأفعال الخمسة ونائب الفاعل</div>
+        <div class="card-desc">الأفعال الخمسة وإعرابها، وجملة المبني للمجهول ونائب الفاعل</div>
+        <div class="card-sections">
+          <span class="tag blue">قاعدة</span>
+          <span class="tag gold">أمثلة</span>
+          <span class="tag blue">أسئلة</span>
+        </div>
+      </div>
+
+      <div class="lesson-card" onclick="openLesson('spelling')">
+        <div class="card-icon green">✒️</div>
+        <div class="card-num">إملاء</div>
+        <div class="card-title">الهمزة المتطرفة</div>
+        <div class="card-desc">قواعد رسم الهمزة في آخر الكلمة بحسب الحرف الذي قبلها</div>
+        <div class="card-sections">
+          <span class="tag green">إملاء</span>
+          <span class="tag gold">أمثلة</span>
+          <span class="tag blue">أسئلة</span>
+        </div>
+      </div>
+
+      <button class="exam-btn" onclick="openExam()">
+        🏆 الامتحان الشامل — ١٠٠ سؤال على الكتاب كله
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== LESSON PAGE ========== -->
+<div id="lesson-page" class="screen">
+  <nav class="lesson-nav">
+    <button class="nav-back" onclick="goHome()">→ الرئيسية</button>
+    <span class="nav-title" id="lesson-nav-title"></span>
+    <span class="nav-progress" id="lesson-nav-sub"></span>
+  </nav>
+
+  <div class="lesson-tabs" id="lesson-tabs"></div>
+
+  <div class="lesson-content" id="lesson-content"></div>
+</div>
+
+<!-- ========== EXAM PAGE ========== -->
+<div id="exam-page" class="screen">
+  <nav class="exam-nav">
+    <button class="nav-back" onclick="goHome()">→ الرئيسية</button>
+    <span class="nav-title" style="color:var(--gold);font-family:'Amiri',serif;font-size:18px;">الامتحان الشامل</span>
+    <span class="exam-timer" id="exam-timer">00:00</span>
+  </nav>
+  <div class="exam-content" id="exam-content"></div>
+</div>
+
+<script>
+// ============================================================
+//  DATA
+// ============================================================
+const LESSONS = {
+
+fish: {
+  title: 'الثروة السمكية والاقتصاد القومي',
+  sub: 'درس القراءة الأول',
+  tabs: ['القراءة','معاني الكلمات','الأسئلة والتدريبات'],
+  reading: `
+    <div class="text-block">
+      <p>قال الله تعالى: ﴿وَمَا يَسْتَوِي الْبَحْرَانِ هَذَا عَذْبٌ فُرَاتٌ سَائِغٌ شَرَابُهُ وَهَذَا مِلْحٌ أُجَاجٌ وَمِن كُلٍّ تَأْكُلُونَ لَحْمًا طَرِيًّا وَتَسْتَخْرِجُونَ حِلْيَةً تَلْبَسُونَهَا وَتَرَى الْفُلْكَ فِيهِ مَوَاخِرَ لِتَبْتَغُوا مِن فَضْلِهِ وَلَعَلَّكُمْ تَشْكُرُونَ﴾ (فاطر: 12)</p>
+      <p>لقد حبا الله مصر بخيرات كثيرة، منها موقعها المتميز وامتداد سواحلها البحرية، وتعدد مصادر صيد الأسماك البحرية والنيلية بها، وتُعدّ الأسماك من أهم مصادر الثروة المائية منذ العصر الحجري.</p>
+      <p>وتُعدّ الثروة السمكية في مصر من ركائز الاقتصاد القومي، لما توفره من غذاء نافع، كما تقوم عليها صناعات كثيرة مثل صناعة الأعلاف ومستلزمات الإنتاج، وتسهم في توفير فرص العمل وزيادة الدخل.</p>
+      <p>ولأهمية الثروة السمكية تعمل الدولة دائمًا على النهوض بها، حيث تُنشئ أحواضًا مائية تستمد مياهها من المسطحات المائية المالحة والعذبة، ثم تُطلق فيها زريعة الأسماك المرغوب في تربيتها لتنمو وتتكاثر.</p>
+      <p>وقد نُفذت مشروعات هامة في مجال الاستزراع السمكي مثل مشروع المدينة السمكية الصناعية بكفر الشيخ، بما يساعد على زيادة الإنتاج، وخفض الأسعار، وتوفير فرص العمل، ودعم الاقتصاد القومي.</p>
+    </div>`
+  ,
+  vocab: [
+    {word:'لا يستوي', meaning:'لا يتساوى / لا يتشابه'},
+    {word:'عذب', meaning:'ماء حلو غير مالح'},
+    {word:'فرات', meaning:'شديد العذوبة وسهل الشرب'},
+    {word:'سائغ', meaning:'سهل البلع والشرب'},
+    {word:'ملح أجاج', meaning:'شديد الملوحة ومرّ'},
+    {word:'لحمًا طريًا', meaning:'لحمًا لينًا طازجًا'},
+    {word:'حِلْية', meaning:'زينة مثل اللؤلؤ'},
+    {word:'الفلك', meaning:'السفن'},
+    {word:'مواخر', meaning:'تشق الماء وتسير فيه'},
+    {word:'تبتغوا', meaning:'تطلبوا / تسعوا للحصول'},
+    {word:'فضلِه', meaning:'رزقه وخيره'},
+    {word:'حبا الله', meaning:'أعطى الله ومنح'},
+    {word:'سواحلها', meaning:'حدودها البحرية'},
+    {word:'الثروة المائية', meaning:'ما يتعلق بالمياه من خيرات'},
+    {word:'ركائز', meaning:'أساسات / دعائم'},
+    {word:'الاقتصاد القومي', meaning:'اقتصاد الدولة'},
+    {word:'علائق', meaning:'طعام وعلف الحيوانات والأسماك'},
+    {word:'النهوض', meaning:'التقدم والتطور'},
+    {word:'زريعة الأسماك', meaning:'صغار الأسماك'},
+    {word:'الاستزراع السمكي', meaning:'تربية الأسماك في مزارع مائية'},
+  ],
+  beauty: [],
+  quiz: [
+    {q:'ما المعنى الصحيح لكلمة "حبا" في النص؟', opts:['أخذ','أعطى ومنح','منع','سلب'], ans:1, exp:'حبا تعني أعطى ومنح، وضدها منع'},
+    {q:'الثروة السمكية تُعدّ ركيزة من ركائز...', opts:['الصناعة فقط','التعليم','الاقتصاد القومي','الزراعة فقط'], ans:2, exp:'الثروة السمكية من ركائز الاقتصاد القومي كما ذكر النص'},
+    {q:'ما مفرد كلمة "ركائز"؟', opts:['ركيز','ركيزة','ركائزة','ركزة'], ans:1, exp:'مفرد ركائز هو: ركيزة'},
+    {q:'من أين تستمد أحواض الاستزراع السمكي مياهها؟', opts:['من الأمطار فقط','من مياه المسطحات المائية','من الآبار الجوفية فقط','من نهر النيل فقط'], ans:1, exp:'تستمد مياهها من مياه المسطحات المائية سواء الملاحة أو العذبة'},
+    {q:'أين يقع مشروع المدينة السمكية الصناعية (هليون)؟', opts:['بورسعيد','مرسى مطروح','كفر الشيخ','الإسكندرية'], ans:2, exp:'مشروع المدينة السمكية (هليون) بمحافظة كفر الشيخ'},
+    {q:'ما مضاد كلمة "المتميز"؟', opts:['المتفوق','المشهور','المجهول الضعيف','المعروف'], ans:2, exp:'مضاد المتميز: المجهول أو الضعيف'},
+    {q:'الآية الكريمة في بداية النص من سورة...', opts:['البقرة','النحل','فاطر','يس'], ans:2, exp:'الآية من سورة فاطر الآية 12'},
+    {q:'كيف يسعد المجتمع المصري من الاستزراع السمكي؟', opts:['بارتفاع الأسعار','بانخفاض أسعار السمك وتوفير فرص العمل','بزيادة الضرائب','بتقليل الإنتاج'], ans:1, exp:'يسعد المجتمع بانخفاض الأسعار وفتح باب العمل أمام الملايين'},
+    {q:'ما المقصود بـ"الثروة المائية"؟', opts:['مياه الشرب فقط','الأسماك والكائنات المائية وما يتعلق بها','الأمطار والسيول','المياه الجوفية'], ans:1, exp:'الثروة المائية تشمل الأسماك والكائنات المائية وما يتعلق بها'},
+    {q:'ما الفائدة من تصدير الأسماك؟', opts:['زيادة الأسعار محلياً','خفض الإنتاج','توفير فرص عمل وعملات أجنبية','لا فائدة منه'], ans:2, exp:'التصدير يوفر فرص عمل وعملات أجنبية تساعد على نهضة الاقتصاد القومي'},
+    {q:'مصادر صيد الأسماك في مصر...', opts:['بحرية فقط','نيلية فقط','بحرية ونيلية','من البحيرات فقط'], ans:2, exp:'مصادر الصيد بحرية ونيلية كما ذكر النص'},
+    {q:'جمع كلمة "حوض" هو...', opts:['حيضان','أحواض','حوائض','أحاوض'], ans:1, exp:'جمع حوض: أحواض'},
+    {q:'ما المضاد لكلمة "تنخفض"؟', opts:['تتضاعف','ترتفع','تثبت','تتراجع'], ans:1, exp:'مضاد تنخفض: ترتفع'},
+    {q:'الأسماك من أهم مصادر الثروة المائية منذ...', opts:['العصر الحديث','العصر الإسلامي','العصر الحجري','العصر الفرعوني'], ans:2, exp:'الأسماك من أهم مصادر الثروة المائية منذ العصر الحجري'},
+    {q:'ما نوع أسلوب قوله تعالى "وَلَعَلَّكُمْ تَشْكُرُونَ"؟', opts:['أسلوب نهي','أسلوب رجاء والتعليل','أسلوب تقرير','أسلوب شرط'], ans:1, exp:'أسلوب رجاء ويفيد التعليل والغاية من نعمة البحر'},
+    {q:'من يقوم بإنشاء أحواض الاستزراع السمكي؟', opts:['القطاع الخاص فقط','الشعب','الدولة بالتعاون مع وزارة الزراعة','الحكومة المحلية فقط'], ans:2, exp:'الدولة بالتعاون مع وزارة الزراعة والأجهزة المعنية'},
+    {q:'ما مفرد "سواحل"؟', opts:['ساحلة','سَوَاحِل','ساحل','سُحُل'], ans:2, exp:'مفرد سواحل: ساحل'},
+    {q:'الهدف من عملية "تفريخ" الأسماك هو...', opts:['بيع الأسماك','إطلاق صغار الأسماك لتنمو وتكثر','صيد الأسماك الكبيرة','معالجة الأسماك'], ans:1, exp:'التفريخ يعني إطلاق زريعة الأسماك في الأحواض لتتكاثر وتنمو'},
+    {q:'"تستمد" في النص تعني...', opts:['تعطي','تأخذ وتستقي','ترفض','تُرسل'], ans:1, exp:'تستمد تعني: تأخذ وتستقي'},
+    {q:'ما الحكمة من قوله تعالى عن البحرين العذب والمالح؟', opts:['بيان أنواع الأسماك','التدليل على قدرة الله وتنوع نعمه','تحريم أكل الأسماك المالحة','بيان فضل شرب الماء'], ans:1, exp:'الآية تدل على قدرة الله وتنوع نعمه في البحر العذب والمالح'},
+  ]
+},
+
+mercy: {
+  title: 'التراحم بين الناس',
+  sub: 'درس القراءة الثاني',
+  tabs: ['القراءة','مظاهر الجمال','معاني الكلمات','الأسئلة والتدريبات'],
+  reading: `
+    <div class="text-block">
+      <p>يدعو هذا الدرس إلى الرحمة والتراحم بين الناس، وإلى أن يجعل الإنسان قلبه مفتوحًا للخير، وأن يواسي الضعيف والمسكين، ويخفف عن البائس والمقهور.</p>
+      <p>فالرحمة ليست كلمة تُقال فقط، بل هي شعور صادق وعمل ظاهر، يتجلى في مسح الدموع، ومساعدة المحتاج، والوقوف بجانب من ألمّت به الشدائد.</p>
+      <p>ويرى الكاتب أن المجتمع لا يستقيم إلا إذا تراحم أفراده، لأن الرحمة تُشيع الطمأنينة، وتجمع القلوب، وتجعل الإنسان إنسانًا بحق.</p>
+    </div>`
+  ,
+  vocab: [
+    {word:'الشهيد', meaning:'الشخص الذي يضحي بنفسه في سبيل الحق'},
+    {word:'ألمر قلبك الرحمة', meaning:'اجعل قلبك مليئًا بالرحمة'},
+    {word:'فتحًا', meaning:'منفتحًا / واسعًا'},
+    {word:'ألمّ به', meaning:'أصابه أو نزل به'},
+    {word:'هيئ جانبي', meaning:'أكون بجانبه / أسانده'},
+    {word:'الجليس', meaning:'الشخص الذي يجلس معك'},
+    {word:'المسكين', meaning:'الفقير المحتاج'},
+    {word:'يعقد داخله', meaning:'يخفي في نفسه'},
+    {word:'الشأن الخافي', meaning:'الأمر المخفي'},
+    {word:'السواد الخالص', meaning:'الحزن الشديد'},
+    {word:'البائسين', meaning:'شديدي الفقر والحزن'},
+    {word:'الخاملة', meaning:'الهادئة أو الساكنة'},
+    {word:'الثناء', meaning:'المدح'},
+    {word:'تُصمت الدموع', meaning:'تمسحها وتوقفها'},
+    {word:'تُريق الدماء', meaning:'تسفكها'},
+    {word:'تُشرع الشموع', meaning:'تضيئها'},
+    {word:'تنفر', meaning:'تُخيف أو تُبعد'},
+    {word:'تراحم الناس', meaning:'تعاطفوا ورحم بعضهم بعضًا'},
+    {word:'مقهوم', meaning:'مظلوم أو مغلوب'},
+    {word:'مؤونته', meaning:'ما يحتاجه من طعام وعيش'},
+  ],
+  beauty: [
+    {type:'أسلوب أمر', quote:'كن رحيمًا', explain:'أسلوب أمر يدل على النصح والإرشاد'},
+    {type:'استعارة', quote:'ليكن قلبك فتحًا', explain:'شبه القلب بشيء مفتوح واسع'},
+    {type:'تشخيص', quote:'الرحمة بصيغها ستقول', explain:'جعل الرحمة كأنها إنسان يتكلم'},
+    {type:'كناية', quote:'اليد التي تُصمت الدموع', explain:'كناية عن فعل الخير ومساعدة الآخرين'},
+    {type:'مقابلة', quote:'أفضل من اليد التي تريق الدماء', explain:'مقابلة بين الخير والشر تزيد المعنى وضوحًا'},
+    {type:'استعارة', quote:'تُشرع الشموع', explain:'تعبير جميل عن نشر النور والخير'},
+    {type:'تشبيه', quote:'بين لفظها ومعناها كالفرق بين الشمس', explain:'تشبيه يوضح الفرق الكبير'},
+    {type:'أسلوب شرط', quote:'لو تراحم الناس', explain:'أسلوب شرط يدل على أهمية الرحمة'},
+    {type:'تصوير أدبي', quote:'بساط الأرض وظلال السماء', explain:'تصوير جميل للطبيعة وخيال أدبي مؤثر'},
+    {type:'استفهام', quote:'متى يكون الإنسان إنسانًا؟', explain:'أسلوب استفهام غرضه التشويق وإثارة التفكير'},
+  ],
+  quiz: [
+    {q:'ما معنى كلمة "حالك" في درس التراحم؟', opts:['ساطع','شديد الظلمة','هادئ','خفيف'], ans:1, exp:'"حالك" تعني شديد الظلمة'},
+    {q:'ما مضاد كلمة "الخاملة"؟', opts:['الساكنة','الهادئة','النشيطة المتحركة','الراكدة'], ans:2, exp:'مضاد الخاملة: النشيطة أو المتحركة'},
+    {q:'ما الجمال في قول "اليد التي تصمت الدموع"؟', opts:['تشبيه تمثيلي','استعارة مكنية','جناس','طباق'], ans:1, exp:'استعارة مكنية شبهت الدموع بشيء له صوت يُسكت — سرها التشخيص'},
+    {q:'ما معنى "يقتر"؟', opts:['يوسع','يبخل ويضيق','يعطي بسخاء','يقسم'], ans:1, exp:'"يقتر" تعني يضيق ويبخل، وضدها يوسّع'},
+    {q:'يدعو الكاتب الناس إلى...', opts:['الغضب والانتقام','الكسل والخمول','التراحم والعطف على الضعفاء','الانعزال عن المجتمع'], ans:2, exp:'الكاتب يدعو إلى التراحم والعطف على الفقراء والبائسين'},
+    {q:'ما مفرد "قصائد"؟', opts:['قصيد','قصيدة','قصائدة','أقصودة'], ans:1, exp:'مفرد قصائد: قصيدة'},
+    {q:'ما نوع الأسلوب في "أتدري متى يكون الإنسان إنساناً"؟', opts:['أسلوب خبري','أسلوب استفهام للتشويق','أسلوب نهي','أسلوب أمر'], ans:1, exp:'أسلوب استفهام غرضه التشويق وإثارة التفكير'},
+    {q:'الرحمة في النص وصفت بأنها...', opts:['صفة من صفات الملوك فقط','صفة إلهية ينبغي أن تكون في قلب كل إنسان','صفة الضعفاء فقط','صفة نادرة'], ans:1, exp:'الرحمة صفة إلهية ينبغي أن تكون في قلب كل إنسان'},
+    {q:'ما المراد بـ"خفقان القلوب"؟', opts:['مرض القلب','حركة القلب ونبضه التعاطفي','ألم القلب','توقف القلب'], ans:1, exp:'خفقان القلوب يعني نبضها ودقها وتحركها بالعاطفة والتعاطف'},
+    {q:'ما معنى "تهيم"؟', opts:['تسكن','تجول وتتشرد','ترتاح','تعود'], ans:1, exp:'"تهيم" تعني تجول وتتشرد'},
+    {q:'من يقول الكاتب إنه أفضل من يريق الدماء؟', opts:['المحارب الشجاع','من يمسح الدموع ويسد الرمق','التاجر الثري','الحاكم العادل'], ans:1, exp:'من يمسح الدموع ويسد الرمق أفضل ممن يريق الدماء'},
+    {q:'ما نوع الجمال في الطباق بين "أفضل وأشرف"؟', opts:['جناس','طباق','تشبيه','كناية'], ans:1, exp:'الطباق يوضح المعنى ويقويه بالمقابلة'},
+    {q:'لم يخلق الله الإنسان ليتلف بل خلقه...', opts:['ليحارب','ليحيا ويستفيد مما أعده الله له','ليجمع المال','ليحكم الأرض'], ans:1, exp:'خلقه ليحيا ويأكل مما أعده الله له فوق بساط الأرض'},
+    {q:'ما مضاد "يقتر"؟', opts:['يبخل','يصمت','يوسّع','يشق'], ans:2, exp:'مضاد يقتر: يوسّع'},
+    {q:'من يعلّم الكاتب الناس أنه يكون إنساناً حقيقياً؟', opts:['من يعرف حقيقة الرحمة ويطبقها','من يجمع المال','من يتعلم العلوم','من يحكم الناس'], ans:0, exp:'الإنسان الحقيقي هو من يعرف حقيقة الرحمة ويطبقها في حياته'},
+    {q:'ما معنى "مغبون"؟', opts:['فرحان','مظلوم','غني','أمين'], ans:1, exp:'"مغبون" تعني مظلوم'},
+    {q:'التشبيه في "الرحمة كلمة ومعناها كالشمس" سره...', opts:['الإيجاز','الإيضاح بالتصوير الحسي','المبالغة','الإغراب'], ans:1, exp:'سر الجمال: الإيضاح بالتصوير الحسي المحسوس للمعنى المجرد'},
+    {q:'ما جمع "قصيدة"؟', opts:['قصيدات','قصائد','أقاصيد','قصيد'], ans:1, exp:'جمع قصيدة: قصائد'},
+    {q:'يرى الكاتب أن الرحمة والشقاء...', opts:['يجتمعان في أي مكان','لا يجتمعان أبداً في مكان واحد','يمكن جمعهما','يتعاونان'], ans:1, exp:'الرحمة والشقاء لا يجتمعان — كما لا يجتمع الملك والشيطان في بقعة'},
+    {q:'كلمة "خفق" تعني...', opts:['سكن','صمت','دق وتحرك','غاب'], ans:2, exp:'"خفق" تعني دق وتحرك'},
+  ]
+},
+
+tolerance: {
+  title: 'صور من التسامح الفعلي',
+  sub: 'درس القراءة الثالث',
+  tabs: ['القراءة','معاني الكلمات','الأسئلة والتدريبات'],
+  reading: `
+    <div class="text-block">
+      <p>أرسل الله محمداً عليه الصلاة والسلام خاتماً للنبيين، ومصدقاً للرسل من قبله، وأنزل عليه القرآن الكريم مؤيداً للكتب السماوية المنزلة، ولا يصح الإسلام بغير الإيمان بالأنبياء السابقين وبما أنزل الله عليهم من كتب.</p>
+      <p>وقد حفِل القرآن الكريم بدعوة المسلمين إلى التسامح، فلم يمنع المسلمين من البر مع غير المسلمين وحسن صلتهم؛ قال تعالى: ﴿لَا يَنْهَاكُمُ اللَّهُ عَنِ الَّذِينَ لَمْ يُقَاتِلُوكُمْ فِي الدِّينِ وَلَمْ يُخْرِجُوكُم مِّن دِيَارِكُمْ أَن تَبَرُّوهُمْ وَتُقْسِطُوا إِلَيْهِمْ إِنَّ اللَّهَ يُحِبُّ الْمُقْسِطِينَ﴾ (الممتحنة: 8).</p>
+      <p>وقد قام الإسلام على التسامح قولاً وعملاً، وفي صلح الحديبية اشترطت قريش على النبي صلى الله عليه وسلم شروطاً قاسية، منها أن من جاء من عند محمد إلى قريش لا ترده إلى محمد، ومن جاء إلى محمد من قريش بغير إذن وليّه ردّه النبي إليهم، وقَبِل النبي هذه الشروط.</p>
+      <p>ولما فتح الرسول صلى الله عليه وسلم مكة قال لقريش: «اذهبوا فأنتم الطلقاء، لا تثريب عليكم اليوم»، فكان ذلك نموذجاً عظيمًا في العفو والتسامح.</p>
+      <p>وكان النبي صلى الله عليه وسلم يحضر لأهل الكتاب في مصائبهم، ويؤاسيهم، كما يدل تاريخ الإسلام على حسن معاملة غير المسلمين والعدل معهم.</p>
+      <p>ومن صور ذلك موقف عمر بن الخطاب رضي الله عنه في كنيسة القيامة، حين طلب منه البطريرك أن يصلي فيها، فاعتذر حتى لا يتخذها المسلمون مسجداً من بعده.</p>
+      <p>إن هذه الصور الرائعة من التسامح في الإسلام تحتم علينا أن نطبقها في حياتنا مع الجميع في المدرسة والشارع وكل مكان.</p>
+    </div>`
+  ,
+  vocab: [
+    {word:'خاتمًا للنبيين', meaning:'آخر الأنبياء'},
+    {word:'مُصدّقًا', meaning:'مؤيدًا ومؤكدًا'},
+    {word:'مؤيدًا', meaning:'مدعمًا ومقويًا'},
+    {word:'الكتب السماوية', meaning:'الكتب التي أنزلها الله'},
+    {word:'لا يصح الإسلام', meaning:'لا يكتمل ولا يُقبل'},
+    {word:'حَفِلَ القرآن', meaning:'امتلأ'},
+    {word:'التسامح', meaning:'العفو وقبول الآخر'},
+    {word:'البرّ', meaning:'الإحسان'},
+    {word:'تُقسطوا', meaning:'تعدلوا'},
+    {word:'المقسطين', meaning:'العادلين'},
+    {word:'صلح الحديبية', meaning:'اتفاق بين المسلمين وقريش'},
+    {word:'شروطًا قاسية', meaning:'صعبة وشديدة'},
+    {word:'رَدَّه', meaning:'أعاده'},
+    {word:'فتح مكة', meaning:'دخولها بدون قتال'},
+    {word:'الطلقاء', meaning:'الأحرار بعد العفو'},
+    {word:'لا تثريب', meaning:'لا لوم ولا عتاب'},
+    {word:'يؤاسيهم', meaning:'يخفف عنهم ويواسيهم'},
+    {word:'أهل الكتاب', meaning:'اليهود والنصارى'},
+    {word:'البطريرك', meaning:'كبير رجال الدين المسيحي'},
+    {word:'تحتم علينا', meaning:'تُوجب علينا'},
+  ],
+  beauty: [],
+  quiz: [
+    {q:'كيف دعا الإسلام إلى التسامح مع غير المسلمين؟', opts:['نهى عن مصادقتهم','أمر بمعاملتهم بالبر والقسط إذا لم يقاتلوا','أمر بعدم التعامل معهم','لم يذكر ذلك'], ans:1, exp:'القرآن دعا إلى البر والقسط مع غير المسلمين الذين لم يقاتلوا'},
+    {q:'ما معنى "مصدقاً" في النص؟', opts:['مكذباً','ناقضاً','مؤمناً ومؤيداً لما جاء قبله','رافضاً'], ans:2, exp:'"مصدقاً" تعني مؤيداً ومؤمناً بما جاء من الرسل قبله'},
+    {q:'ما مرادف "الطلقاء"؟', opts:['الأسرى','الأحرار','المقاتلون','العبيد'], ans:1, exp:'"الطلقاء" تعني الأحرار، مفردها طليق'},
+    {q:'لماذا اعتذر عمر بن الخطاب عن الصلاة في الكنيسة؟', opts:['لأنه لا يريد الصلاة','حتى لا يُتخذ المكان مسجداً للمسلمين','لأن الوقت لم يحن','لأن البطريرك لم يدعه'], ans:1, exp:'اعتذر حتى لا يتخذ المكان مسجداً من بعده'},
+    {q:'ما شروط قريش في صلح الحديبية بشأن الأشخاص؟', opts:['إطلاق سراح الأسرى','من جاء من عند النبي لا يُرد، ومن جاء من قريش يُرد','من جاء من قريش لا يُرد، ومن جاء من النبي يُرد','لا يوجد شرط للأشخاص'], ans:2, exp:'شرطوا أن من جاء من عند قريش يُرد ومن جاء إليهم من النبي لا يُرد'},
+    {q:'ماذا قال النبي لأهل مكة عند الفتح؟', opts:['عاقبهم','أخذهم أسرى','قال لهم: اذهبوا فأنتم الطلقاء لا تثريب عليكم','طردهم من مكة'], ans:2, exp:'قال النبي: اذهبوا فأنتم الطلقاء لا تثريب عليكم'},
+    {q:'ما معنى "تثريب"؟', opts:['مدح وثناء','توبيخ ولوم','تكريم','عفو'], ans:1, exp:'"تثريب" تعني توبيخ ولوم وعتاب'},
+    {q:'من أي سورة الآية: ﴿لَا يَنْهَاكُمُ اللَّهُ...﴾؟', opts:['البقرة','الممتحنة','آل عمران','المائدة'], ans:1, exp:'الآية من سورة الممتحنة آية 8'},
+    {q:'ما معنى "حفّل" في النص؟', opts:['خلا من','ملأ واحتوى على','نهى عن','رفض'], ans:1, exp:'"حفّل" تعني ملأ واحتوى على'},
+    {q:'ما الهدف من ذكر قصة عمر في الكنيسة؟', opts:['بيان رفض عمر للصلاة','التدليل على تسامح الإسلام ومعاملة غير المسلمين','انتقاد قرار عمر','بيان أهمية كنيسة القيامة'], ans:1, exp:'الهدف: التدليل على تسامح الإسلام وحسن معاملة غير المسلمين'},
+    {q:'ما مضاد "يُقسطوا"؟', opts:['يعدلوا','يُنصفوا','يظلموا','يحسنوا'], ans:2, exp:'مضاد يُقسطوا: يظلموا'},
+    {q:'من هو خاتم الأنبياء والمرسلين؟', opts:['موسى عليه السلام','إبراهيم عليه السلام','عيسى عليه السلام','محمد صلى الله عليه وسلم'], ans:3, exp:'محمد صلى الله عليه وسلم هو خاتم الأنبياء والمرسلين'},
+    {q:'ما الذي يجب على الطالب تطبيقه من درس التسامح؟', opts:['التسامح في المدرسة والشارع ووسائل التواصل فقط','التسامح مع الجميع في كل مكان','التسامح مع المسلمين فقط','التسامح في المدرسة فقط'], ans:1, exp:'يجب التسامح مع الجميع في كل مكان'},
+    {q:'كان النبي يؤاسي أهل الكتاب في...', opts:['أفراحهم فقط','مصائبهم فقط','أفراحهم ومصائبهم','لم يكن يؤاسيهم'], ans:2, exp:'كان يحضر لهم في مصائبهم ويؤاسيهم في أفراحهم'},
+    {q:'ما مفرد "الطلقاء"؟', opts:['طلاق','طليق','طلق','مطلق'], ans:1, exp:'مفرد الطلقاء: طليق'},
+    {q:'ما جمع "بطريرك"؟', opts:['بطاريق','بطارقة','بطاريركة','بطارق'], ans:1, exp:'جمع بطريرك: بطاركة'},
+    {q:'"حانت" في النص تعني...', opts:['غابت','جاء وقتها','اقتربت','انتهت'], ans:1, exp:'"حانت" تعني: جاء وقتها ودخل وقتها'},
+    {q:'الآية 8 من سورة الممتحنة تتحدث عن...', opts:['الجهاد في سبيل الله','تحريم مصادقة الكفار','جواز البر بغير المسلمين السلميين','وجوب قتال المشركين'], ans:2, exp:'الآية تتحدث عن جواز البر والإقساط مع غير المسلمين الذين لم يقاتلوا'},
+    {q:'ما الذي يدل على تسامح الإسلام مع أهل الكتاب في المطاعم؟', opts:['تحريم أكل طعامهم','أباح الإسلام للمسلمين أكل طعام أهل الكتاب وزواج نسائهم','منع التعامل معهم','لا شيء'], ans:1, exp:'الإسلام أباح للمسلمين أكل طعام أهل الكتاب وزواج نسائهم'},
+  ]
+},
+
+quran: {
+  title: 'التجارة الرابحة — قرآن كريم',
+  sub: 'درس الأدب والنصوص الأول',
+  tabs: ['النص','مظاهر الجمال','معاني الكلمات','الأسئلة والتدريبات'],
+  reading: `
+    <div class="info-box">
+      <div class="info-box-title">📌 مقدمة النص</div>
+      <p>لم يترك القرآن الكريم جانباً من جوانب الحياة إلا وضع الأسس التي تكفل لنا حياة كريمة سعيدة، وهذه الآيات الكريمة تتحدث عن التجارة الرابحة التي بها سعادة الإنسان في الدنيا والآخرة.</p>
+    </div>
+    <div class="text-block">
+      <p>﴿يَا أَيُّهَا الَّذِينَ آمَنُوا هَلْ أَدُلُّكُمْ عَلَى تِجَارَةٍ تُنجِيكُم مِّنْ عَذَابٍ أَلِيمٍ ۝ تُؤْمِنُونَ بِاللَّهِ وَرَسُولِهِ وَتُجَاهِدُونَ فِي سَبِيلِ اللَّهِ بِأَمْوَالِكُمْ وَأَنفُسِكُمْ ذَلِكُمْ خَيْرٌ لَّكُمْ إِن كُنتُمْ تَعْلَمُونَ ۝ يَغْفِرْ لَكُمْ ذُنُوبَكُمْ وَيُدْخِلْكُمْ جَنَّاتٍ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ وَمَسَاكِنَ طَيِّبَةً فِي جَنَّاتِ عَدْنٍ ذَلِكَ الْفَوْزُ الْعَظِيمُ ۝ وَأُخْرَى تُحِبُّونَهَا نَصْرٌ مِّنَ اللَّهِ وَفَتْحٌ قَرِيبٌ وَبَشِّرِ الْمُؤْمِنِينَ﴾ (الصف: ١٠-١٣)</p>
+    </div>
+    <div class="summary-box">
+      <div class="summary-title">شرح الآيات</div>
+      <ul class="summary-list">
+        <li>يوجه الله نداءه للمؤمنين ويعرض عليهم صفقة رابحة — وهي الإيمان بالله والجهاد بالمال والنفس</li>
+        <li>الجزاء: مغفرة الذنوب والدخول إلى جنات عدن والنصر القريب</li>
+        <li>"الفوز العظيم" هو الجنة والنجاة من النار</li>
+        <li>"وأخرى تحبونها" نعمة أخرى عاجلة وهي النصر والفتح في الدنيا</li>
+      </ul>
+    </div>
+  `,
+    vocab: [
+    {word:'يا أيها الذين آمنوا', meaning:'نداء فيه تكريم وتشريف للمؤمنين'},
+    {word:'هل أدلكم', meaning:'أسلوب عرض وتشويق'},
+    {word:'تجارة', meaning:'عمل يربح الإنسان (مجاز عن العمل الصالح)'},
+    {word:'تنجيكم', meaning:'تُخلّصكم وتُبعدكم'},
+    {word:'عذاب أليم', meaning:'عذاب شديد مؤلم'},
+    {word:'تؤمنون بالله ورسوله', meaning:'الإيمان أساس النجاة'},
+    {word:'تجاهدون', meaning:'تبذلون الجهد في طاعة الله'},
+    {word:'في سبيل الله', meaning:'في طريق رضاه'},
+    {word:'بأموالكم', meaning:'بالإنفاق والتصدق'},
+    {word:'وأنفسكم', meaning:'بالتضحية والعمل'},
+    {word:'ذلكم خير لكم', meaning:'هذا أفضل لكم'},
+    {word:'إن كنتم تعلمون', meaning:'لو كنتم تدركون الحقيقة'},
+    {word:'يغفر لكم ذنوبكم', meaning:'يمحو خطاياكم'},
+    {word:'يدخلكم جنات', meaning:'يُدخلكم الجنة'},
+    {word:'تجري من تحتها الأنهار', meaning:'وصف لنعيم الجنة'},
+    {word:'مساكن طيبة', meaning:'بيوت جميلة نقية'},
+    {word:'جنات عدن', meaning:'إقامة دائمة في الجنة'},
+    {word:'الفوز العظيم', meaning:'أعظم نجاح'},
+    {word:'نصر من الله', meaning:'مساعدة وتأييد إلهي'},
+    {word:'فتح قريب', meaning:'انتصار قريب وبشارة عاجلة'},
+    {word:'أدلكم', meaning:'أرشدكم وأهديكم الطريق'},
+    {word:'التجارة', meaning:'التصرف في رأس المال طلباً للربح'},
+    {word:'يدخلكم', meaning:'يُسكنكم ويضمكم'},
+    {word:'ذلكم', meaning:'اسم إشارة يفيد التعظيم والتشريف والعموم'},
+    {word:'وبشر المؤمنين', meaning:'البشرى للمخلصين بالجنة'}
+  ],
+  beauty: [
+    {type:'أسلوب نداء للتشويق والتنبيه', quote:'يا أيها الذين آمنوا', explain:'أسلوب نداء للتشويق والتنبيه'},
+    {type:'استفهام غرضه التشويق', quote:'هل أدلكم على تجارة', explain:'استفهام غرضه التشويق'},
+    {type:'استعارة', quote:'تجارة تنجيكم', explain:'شبّه العمل الصالح بالتجارة'},
+    {type:'وصف يزيد الإحساس بالخطر', quote:'عذاب أليم', explain:'وصف يزيد الإحساس بالخطر'},
+    {type:'ترتيب منطقي', quote:'تؤمنون... وتجاهدون', explain:'ترتيب منطقي (إيمان ثم عمل)'},
+    {type:'عطف يدل على الشمول', quote:'بأموالكم وأنفسكم', explain:'عطف يدل على الشمول'},
+    {type:'أسلوب تفضيل', quote:'ذلكم خير لكم', explain:'أسلوب تفضيل'},
+    {type:'شرط يفيد الحث والتفكير', quote:'إن كنتم تعلمون', explain:'شرط يفيد الحث والتفكير'},
+    {type:'نتيجة مترتبة على العمل', quote:'يغفر لكم ذنوبكم', explain:'نتيجة مترتبة على العمل'},
+    {type:'صورة جميلة للنعيم', quote:'جنات تجري من تحتها الأنهار', explain:'صورة جميلة للنعيم'},
+    {type:'تعبير يوحي بالراحة والطمأنينة', quote:'مساكن طيبة', explain:'تعبير يوحي بالراحة والطمأنينة'},
+    {type:'كناية عن الخلود', quote:'جنات عدن', explain:'كناية عن الخلود'},
+    {type:'تعبير يدل على عظمة الجزاء', quote:'الفوز العظيم', explain:'تعبير يدل على عظمة الجزاء'},
+    {type:'أسلوب بشارة وأمل', quote:'نصر من الله وفتح قريب', explain:'أسلوب بشارة وأمل'},
+    {type:'أمر يفيد نشر الفرح والطمأنينة', quote:'وبشر المؤمنين', explain:'أمر يفيد نشر الفرح والطمأنينة'}
+  ],
+
+  quiz: [
+    {q:'من أي سورة الآيات؟', opts:['البقرة','الصف','آل عمران','النساء'], ans:1, exp:'الآيات من سورة الصف من 10 إلى 13'},
+    {q:'ما المقصود بـ"التجارة الرابحة" في الآيات؟', opts:['تجارة الأسواق','بيع العقارات','الإيمان بالله والجهاد بالمال والنفس','التجارة الدولية'], ans:2, exp:'التجارة الرابحة هي الإيمان بالله ورسوله والجهاد بالمال والنفس'},
+    {q:'ما معنى "تنجيكم"؟', opts:['تجمعكم','تخلصكم وتنقذكم','تعذبكم','تحزنكم'], ans:1, exp:'"تنجيكم" تعني تخلصكم وتنقذكم من العذاب'},
+    {q:'ما الجزاء الأخروي للتجارة الرابحة؟', opts:['المال والثروة','مغفرة الذنوب والدخول إلى جنات عدن','الحياة الدنيا','الصحة والعافية'], ans:1, exp:'الجزاء: مغفرة الذنوب والدخول إلى جنات عدن والنصر القريب'},
+    {q:'ما معنى "أدلكم"؟', opts:['أحاسبكم','أرشدكم وأهديكم','أعاقبكم','أمنعكم'], ans:1, exp:'"أدلكم" تعني أرشدكم وأهديكم إلى الطريق'},
+    {q:'ما غرض الاستفهام في "هل أدلكم على تجارة"؟', opts:['الاستنكار','الترغيب والتشويق','الاستفسار','النهي'], ans:1, exp:'الغرض: الترغيب والتشويق وإبراز المعنى وتوضيحه'},
+    {q:'ما "الفوز العظيم" في الآيات؟', opts:['النصر في الدنيا','المال والثروة','الجنة والنجاة من النار','الصحة'], ans:2, exp:'"الفوز العظيم" هو الجنة والنجاة من النار'},
+    {q:'ما "الأخرى" التي يحبها المؤمنون؟', opts:['الجنة','نعمة عاجلة في الدنيا: النصر والفتح القريب','الصحة','العلم'], ans:1, exp:'"وأخرى تحبونها" النصر والفتح القريب في الدنيا — وقد تحقق بفتح مكة'},
+    {q:'ما الأفعال المضارعة في النص وفائدتها؟', opts:['تفيد الماضي','تُؤمنون وتُجاهدون — تفيد التجدد والاستمرار واستحضار الصورة','تفيد الأمر','لا فائدة لها'], ans:1, exp:'الأفعال المضارعة تفيد التجدد والاستمرار واستحضار الصورة'},
+    {q:'ما معنى "جنات عدن"؟', opts:['حدائق مؤقتة','جنات خلد دائمة وعالية فيها مساكن طيبة','بساتين الدنيا','حدائق مكة'], ans:1, exp:'"جنات عدن": جنات الخلد الدائمة بكل ما فيها من نعيم دائم'},
+    {q:'ما إعراب "أليم" في "عذاب أليم"؟', opts:['فاعل','نعت مجرور بالكسرة','مفعول به','مبتدأ'], ans:1, exp:'"أليم": نعت (صفة) لـ"عذاب" مجرور وعلامة جره الكسرة'},
+    {q:'ما مرادف كلمة "التجارة" في السياق القرآني؟', opts:['البيع والشراء التجاري فقط','الإيمان والجهاد والعمل الصالح','جمع المال','السفر للتجارة'], ans:1, exp:'التجارة هنا مجاز يراد بها الإيمان والجهاد والعمل الصالح الذي يربح صاحبه الآخرة'},
+    {q:'الجهاد في سبيل الله يكون بـ...', opts:['المال فقط','النفس فقط','المال والنفس معاً','القول فقط'], ans:2, exp:'الجهاد بالمال والنفس معاً كما نصت الآية الكريمة'},
+    {q:'ما المراد بـ"فتح قريب"؟', opts:['فتح المدارس','فتح الحدود','فتح مكة المكرمة','فتح التجارة'], ans:2, exp:'"فتح قريب" المقصود به فتح مكة المكرمة الذي تحقق بعد صلح الحديبية'},
+    {q:'ما إعراب "المؤمنين" في "وبشر المؤمنين"؟', opts:['فاعل','مفعول به منصوب بالياء','مبتدأ','خبر'], ans:1, exp:'"المؤمنين" مفعول به منصوب وعلامة نصبه الياء لأنه جمع مذكر سالم'},
+    {q:'من المخاطَبون في الآيات؟', opts:['الكافرون','المنافقون','الذين آمنوا','أهل الكتاب'], ans:2, exp:'الآيات تخاطب المؤمنين — "يا أيها الذين آمنوا"'},
+    {q:'ما الفائدة من اسم الإشارة "ذلكم"؟', opts:['الإشارة للقريب','للتعظيم والتشريف والعموم','للتصغير','للتحديد'], ans:1, exp:'"ذلكم" اسم إشارة للبعيد يفيد التعظيم والتشريف والعموم والشمول'},
+    {q:'من هو "فتح قريب" بشارة له؟', opts:['للكافرين','للمنافقين','للمؤمنين المجاهدين','للمشركين'], ans:2, exp:'بشارة النصر والفتح القريب للمؤمنين المجاهدين في سبيل الله'},
+    {q:'ما إعراب "تجارة" في "هل أدلكم على تجارة"؟', opts:['فاعل','اسم مجرور بـ"على"','مفعول به','نعت'], ans:1, exp:'"تجارة" اسم مجرور بحرف الجر "على" وعلامة جره الكسرة'},
+    {q:'خاتمة الآيات "وبشر المؤمنين" تفيد...', opts:['التهديد','بشارة المؤمنين بالنصر والجنة','النهي','التعجب'], ans:1, exp:'خاتمة الآيات بشارة جميلة للمؤمنين بالنصر في الدنيا والجنة في الآخرة'},
+  ]
+},
+
+poetry1: {
+  title: 'ابدأ بنفسك — أبو الأسود الدؤلي',
+  sub: 'درس الأدب والنصوص الثاني',
+  tabs: ['النص الشعري','مظاهر الجمال','معاني الكلمات','الأسئلة والتدريبات'],
+  reading: `
+    <div class="info-box">
+      <div class="info-box-title">🧑‍🎓 نبذة عن الشاعر</div>
+      <p>أبو الأسود الدؤلي: ظالم بن سليمان الدؤلي، من سادات التابعين وفصحائهم وشعرائهم، وهو أول من وضع قواعد النحو في اللغة العربية بتوجيه من الإمام علي بن أبي طالب رضي الله عنه.</p>
+    </div>
+    <div class="text-block">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 32px;font-size:18px;line-height:2.5;">
+        <span>لا تَنْهَ عَنْ خُلُقٍ وتَأتِيَ مِثلَهُ</span>
+        <span>عارٌّ عليكَ إذا فعلتَ عظيمُ</span>
+        <span>ابدأبِنَفسك فانْهَها عن غيِّها</span>
+        <span>فإذا انتهتْ عنهُ فأنتَ حكيمُ</span>
+        <span>فهناكَ يُقبَلُ ما وَعَظتَ ويُقتَدى</span>
+        <span>بالعلم منكَ وينفعُ التعليمُ</span>
+        <span>وأراكَ تُصلِحُ بالرشادِ عقولَنا</span>
+        <span>أبدًا وأنتَ منَ الرشادِ عقيمُ</span>
+        <span>وإذا طَلَبتَ إلى كريمٍ حاجةً</span>
+        <span>فلقاؤهُ يكفيكَ والتسليمُ</span>
+        <span>فإذا رأيتَ مُسلِّمًا ذَكَرَ الذي</span>
+        <span>كلمتُهُ فَكَأَنَّهُ مَلزومُ</span>
+        <span>فالعِتبُ منَّةٌ والكرامُ كريمُ</span>
+        <span>فارِجُ الكريمَ وإنْ رأيتَ جَفاءَهُ</span>
+        <span>وإذا طَلَبتَ إلى لئيمٍ حاجةً</span>
+        <span>فالِحْ في رفقٍ وأنتَ مُديمُ</span>
+        <span>والرزقُ فيما يَبينهم مَفسومُ</span>
+        <span>وعَجِبتُ للدنيا ورهبةِ أهلِها</span>
+      </div>
+    </div>
+  `,
+  vocab: [
+    {word:'ذلّ', meaning:'ذل وخضع، والمضاد: عزّ'},
+    {word:'عار', meaning:'عيب، والجمع: أعيار'},
+    {word:'خُلق', meaning:'طبع وسجيته والمراد بالجمع: أخلاق'},
+    {word:'مظليم', meaning:'كبير، والجمع: مظالم أو ظالم'},
+    {word:'لفسك', meaning:'ذاتك، والجمع: أنفس ولفوس'},
+    {word:'انهها', meaning:'امتنعها'},
+    {word:'غيها', meaning:'الإيمان في الضلال والمضاد: الرشد'},
+    {word:'وعظت', meaning:'نصحت'},
+    {word:'يقتدى', meaning:'يفعل مثله، والمضاد: يخالف'},
+    {word:'ملزوم', meaning:'واجب عليه رد السلام'},
+    {word:'الكريم', meaning:'الذي يعطي بلا حدود'},
+    {word:'مديم', meaning:'مستمر'},
+    {word:'جفاءه', meaning:'ظلظ خلقه المضاد سماحته'},
+    {word:'الخ', meaning:'من الإلحاح وهو الإصرار'},
+  ],
+  beauty: [
+    {type:'أسلوب إنشائي - نهي', quote:'لا تَنْهَ عَنْ خُلُقٍ وتَأتِيَ مِثلَهُ', explain:'البيت كله حكمة خالدة تصلح لكل زمان ومكان، وهو كناية عن ضرورة مطابقة الأقوال للأفعال'},
+    {type:'أسلوب إنشائي - أمر', quote:'ابدأبِنَفسك فانْهَها عن غيِّها', explain:'"ابدأ" أمر نوعه إنشائي غرضه النصح والإرشاد — "انهها عن غيها": استعارة مكنية حيث صور النفس إنساناً يُوجه إليه النهي'},
+    {type:'استعارة مكنية', quote:'وأراكَ تُصلِحُ بالرشادِ عقولَنا', explain:'الرشاد يُصلح العقول — استعارة مكنية حيث صور العقول شيئاً ماديًا يُصلح — سر جمالها: التجسيم'},
+    {type:'استعارة مكنية', quote:'وإذا طَلَبتَ إلى كريمٍ حاجةً', explain:'استعارة مكنية: الحاجة شُبهت بشيء مادي يُطلب — سر الجمال: التجسيم والتقديم والتأخير يفيد التوكيد'},
+    {type:'كناية', quote:'فارِجُ الكريمَ وإنْ رأيتَ جَفاءَهُ', explain:'كناية عن أهمية الصبر والمداومة على حسن الطلب'},
+    {type:'استعارة مكنية', quote:'وعَجِبتُ للدنيا ورهبةِ أهلِها', explain:'الدنيا شُبهت بامرأة يُتعجب منها — سر الجمال: التجسيم'},
+    {type:'استعارة مكنية', quote:'والرزقُ فيما يَبينهم مَفسومُ', explain:'الرزق شُبه بشيء مادي يُقسم — سر الجمال: التجسيم'},
+  ],
+  quiz: [
+    {q:'من هو شاعر قصيدة "ابدأ بنفسك"؟', opts:['المتنبي','الفرزدق','أبو الأسود الدؤلي','أبو تمام'], ans:2, exp:'شاعر القصيدة هو أبو الأسود الدؤلي من سادات التابعين'},
+    {q:'ما الفكرة الرئيسية للبيت الأول؟', opts:['التواضع','حكمة خالدة: ضرورة مطابقة الأقوال للأفعال','الكرم','الشجاعة'], ans:1, exp:'البيت الأول حكمة خالدة عن ضرورة مطابقة الأقوال للأفعال'},
+    {q:'ما نوع أسلوب "ابدأ بنفسك"؟', opts:['خبري','إنشائي أمر غرضه النصح والإرشاد','إنشائي استفهام','إنشائي نهي'], ans:1, exp:'أسلوب إنشائي أمر غرضه النصح والإرشاد'},
+    {q:'ما معنى "غيها"؟', opts:['رشدها','هدايتها','الإيمان في الضلال والبعد عن الحق','خيرها'], ans:2, exp:'"غيها": الضلال والبعد عن الحق، وضده: الرشد'},
+    {q:'ما الجمال في "يُقتدى بالعلم منك"؟', opts:['طباق','استعارة مكنية: صور العلم إنساناً يُقتدى به','جناس','تشبيه بليغ'], ans:1, exp:'استعارة مكنية صور العلم إنساناً يُقتدى به — سرها التجسيم'},
+    {q:'متى يُقبل النصح والوعظ؟', opts:['دائماً بغض النظر','عندما يطابق الواعظ أقواله أفعاله','عندما يكون الواعظ غنياً','عندما يكون الوعظ بصوت عالٍ'], ans:1, exp:'يُقبل النصح عندما يطابق الواعظ أقواله أفعاله ويبدأ بنفسه'},
+    {q:'ما معنى "يُقتدى"؟', opts:['يُعاقب','يُعجب','يفعل مثله ويتبعه','يُرفض'], ans:2, exp:'"يُقتدى": يُتبع ويُفعل مثله، وضده: يُخالف'},
+    {q:'كيف يتعامل الشاعر مع الكريم عند الحاجة؟', opts:['يُلح عليه','يكفيه اللقاء والتسليم','يطلب بعدوانية','يُطالبه بالقوة'], ans:1, exp:'لقاء الكريم والسلام عليه يكفيان — الكريم يعرف ويعطي دون إلحاح'},
+    {q:'ما نوع أسلوب "لا تنه عن خلق"؟', opts:['خبري','إنشائي نهي غرضه النصح','أمر','استفهام'], ans:1, exp:'أسلوب إنشائي نهي غرضه النصح والإرشاد'},
+    {q:'ما معنى "ملزوم"؟', opts:['محرر','واجب عليه رد السلام','مُعفى','كريم'], ans:1, exp:'"ملزوم" تعني واجب عليه رد السلام وهو الكريم'},
+    {q:'ما المضاد لـ"غيها"؟', opts:['ضلالها','شرها','الرشد والهداية','كبرها'], ans:2, exp:'مضاد "غيها": الرشد والهداية إلى الطريق الصحيح'},
+    {q:'ما جمع "خلق"؟', opts:['خُلوق','أخلاق','خلقان','خِلَق'], ans:1, exp:'جمع خُلق: أخلاق'},
+    {q:'الفاء في "فإذا انتهت عنه فأنت حكيم" تفيد...', opts:['التعليل','الترتيب والسرعة وتثبيت التحقق','الاستئناف','التأخير'], ans:1, exp:'الفاء تفيد الترتيب والسرعة والتحقق عند توفر الشرط'},
+    {q:'ما الذي يستغرب منه الشاعر في البيت الأخير؟', opts:['غنى الدنيا','الدنيا ورهبة أهلها في حين الرزق مقسوم','عدل الدنيا','جمال الدنيا'], ans:1, exp:'يستغرب من الدنيا وخوف أهلها مع أن الرزق موزع ومقسوم بين الناس'},
+    {q:'ما معنى "مُديم"؟', opts:['متوقف','مستمر ودائم','منقطع','مؤقت'], ans:1, exp:'"مُديم" تعني مستمر ودائم على الطلب برفق'},
+    {q:'ما سر جمال "وأراك تصلح بالرشاد عقولنا"؟', opts:['التشبيه','استعارة مكنية — التجسيم','الطباق','الجناس'], ans:1, exp:'استعارة مكنية صورت العقول شيئاً مادياً يُصلح — سرها التجسيم'},
+    {q:'أبو الأسود الدؤلي مشهور بأنه...', opts:['أول من كتب الشعر العربي','أول من وضع قواعد النحو العربي','أول الخلفاء الراشدين','أول من كتب القرآن'], ans:1, exp:'أبو الأسود الدؤلي أول من وضع قواعد النحو العربي بتوجيه من علي بن أبي طالب'},
+    {q:'ما الذي يكفي عند طلب الحاجة من الكريم؟', opts:['الإلحاح والمطالبة','اللقاء والتسليم فحسب','التوسط والشفاعة','الإعلان على الملأ'], ans:1, exp:'لقاء الكريم والسلام عليه يكفيان — الكريم يُدرك الحاجة ويعطي دون إلحاح'},
+    {q:'ما معنى "جفاءه"؟', opts:['طيبته','لطفه','ظلظ خُلقه وقسوته','سماحته'], ans:2, exp:'"جفاءه": ظلظ خُلقه وقسوته، وضده: سماحته'},
+    {q:'ما الحكمة الرئيسية في قصيدة "ابدأ بنفسك"؟', opts:['الكرم مع الآخرين','البدء بإصلاح النفس قبل نصح الآخرين','جمع المال','حب الوطن'], ans:1, exp:'الحكمة الرئيسية: ابدأ بإصلاح نفسك قبل أن تنصح الآخرين ليُقبل منك النصح'},
+  ]
+},
+
+poetry2: {
+  title: 'في المدح — الفرزدق',
+  sub: 'درس الأدب والنصوص الثالث',
+  tabs: ['النص الشعري','مظاهر الجمال','معاني الكلمات','الأسئلة والتدريبات'],
+  reading: `
+    <div class="info-box">
+      <div class="info-box-title">📌 مناسبة القصيدة</div>
+      <p>عندما حجّ هشام بن عبد الملك في أيام أبيه، وجاهد أن يصل إلى الحجر الأسود ليستلمه، فلم يستطع لكثرة الزحام، فجلس على سرير ومعه الناس ينظر إليه وبأعيان الشام معه. فإذا أقبل زين العابدين علي بن علي بن الحسين، فلما انتهى إلى الحجر تنحى له الناس حتى استلم الحجر. فقال رجل من أهل الشام: من هذا الذي هابه الناس هذه الهيبة؟ فقال هشام: لا أعرفه. وكان الفرزدق حاضراً، فقال: أنا أعرفه، فأنشد القصيدة.</p>
+    </div>
+    <div class="text-block">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 32px;font-size:17px;line-height:2.5;">
+        <span>هذا الذي تَعرِفُ البطحاءُ وَطْأَتَهُ</span>
+        <span>وَالبَيتُ يَعرِفُهُ وَالحِلُّ وَالحَرَمُ</span>
+        <span>هذا ابنُ خيرِ عِبادِ اللهِ كُلِّهِمُ</span>
+        <span>هذا التَّقِيُّ النَّقِيُّ الطّاهِرُ العَلَمُ</span>
+        <span>وَليسَ قَوْلُكَ: مَن هذا ؟ بِضائِرَهُ</span>
+        <span>العُرْبُ تَعرِفُ مَن أَنكَرتَ وَالعَجَمُ</span>
+        <span>تَهْفَلُ الخَليفَةُ لا تُحصَى بَوادِرَهُ</span>
+        <span>ماقال: لا ، قسـط إلا في تشهـده</span>
+        <span>لَولا التَّشَهُّدُ كانَت لاوَةُ نَعَـمُ</span>
+        <span>إذا رَآهُ قُرَيْـشٌ قَالَ قائِلُهَا</span>
+        <span>يَفضي حَيَاةً وَيُفضى مِن مَهابَتِهِ</span>
+        <span>يَنشَقُّ نُوبُ الدُّجى عَن نورِ غُرَّتِهِ</span>
+        <span>عمَّ البريةَ بالإحسانِ فانقشعَت</span>
+        <span>كالشَّمسِ تَنجَابُ عَن إشرَاقِها الظُّلَمُ</span>
+        <span>عنها الغياهبُ والإملاقُ والعَدمُ</span>
+      </div>
+    </div>
+  `,
+  vocab: [
+    {word:'البطحاء', meaning:'الأرض المستوية والجمع: البطاح'},
+    {word:'وطأته', meaning:'موضع القدم'},
+    {word:'البيت', meaning:'الكعبة'},
+    {word:'الحل', meaning:'ما جاور الحرم من الأرض'},
+    {word:'الحرم', meaning:'مكة وما أحاط بها'},
+    {word:'العلم', meaning:'المشهور المعروف'},
+    {word:'التقيّ', meaning:'قوي الإيمان'},
+    {word:'العلم', meaning:'الذي يعرفه الجميع'},
+    {word:'العجم', meaning:'غير العرب والمفرد: العجمي'},
+    {word:'بضائره', meaning:'يؤذيه ويضره ومرد: لا يُنقص من شأنه'},
+    {word:'أنكرت', meaning:'تجاهلت'},
+    {word:'الغياهب', meaning:'الظلمات والمفرد: الغيهب'},
+    {word:'الإملاق', meaning:'الفقر'},
+  ],
+  beauty: [
+    {type:'كناية', quote:'في البيت الأول: كناية عن شهرته العظيمة وانتشارها في الآفاق', explain:'البيت الأول كناية عن شهرة المادح وانتشارها في كل مكان'},
+    {type:'كناية', quote:'البيت الثاني: كناية عن عراقة أصله ونسبه الشريف', explain:'البيت الثاني كناية عن عراقة الأصل والنسب'},
+    {type:'استفهام للاستنكار', quote:'البيت الثالث: من هذا ؟ استفهام غرضه الاستنكار', explain:'الاستفهام في البيت الثالث غرضه الاستنكار والاستغراب من عدم المعرفة'},
+    {type:'كناية', quote:'البيت الرابع: كناية عن لينه وعلمه وحلمه الواسع وعميم كرمه', explain:'لينه وعلمه وحلمه وكرمه لا يرفض أحداً'},
+    {type:'كناية', quote:'البيت الخامس: كناية أنه لا يرفض لأحد طلباً فلم يقل لا إلا في التشهد', explain:'لا يقول "لا" لأحد طالب — فلم يقل لا إلا في التشهد "أشهد أن لا إله إلا الله"'},
+    {type:'كناية', quote:'البيت السادس: كناية أن أهل قريش لم يروا الكرم من بعده', explain:'أهل قريش لم يروا مثل هذا الكرم وعطائه الكثير من غيره'},
+    {type:'كناية', quote:'البيت السابع: كناية عن جماله البراق وسماحته مع غيره', explain:'جماله وإحسانه يملأ المكان'},
+    {type:'استعارة مكنية', quote:'ينشق ثوب الدجى عن نور غرته', explain:'البيت الثامن: استعارة مكنية — شبه الدجى بثوب ينشق — سرها: التجسيم'},
+    {type:'استعارة مكنية', quote:'عمّ البرية بالإحسان فانقشعت عنها الغياهب', explain:'البيت الأخير: استعارة مكنية — إحسانه عمّ البرية وأزال الظلمات كالشمس'},
+  ],
+  quiz: [
+    {q:'من الممدوح في قصيدة الفرزدق؟', opts:['هشام بن عبد الملك','المتوكل','زين العابدين علي بن الحسين','عمر بن عبد العزيز'], ans:2, exp:'الممدوح هو زين العابدين علي بن الحسين رضي الله عنه'},
+    {q:'لماذا قالها الفرزدق؟', opts:['في مديح الخليفة','لأن هشام ادّعى عدم معرفة الشخص فأنشد الفرزدق يُعرّفه به','في رثاء متوفى','للفخر بنفسه'], ans:1, exp:'هشام ادّعى عدم معرفته فأنشد الفرزدق يُعرّفه ويمدحه'},
+    {q:'ما معنى "البطحاء"؟', opts:['البحر','الأرض المستوية المعروفة بمكة','الجبال','الأشجار'], ans:1, exp:'"البطحاء": الأرض المستوية، والجمع: البطاح'},
+    {q:'ما المقصود بـ"البيت" في القصيدة؟', opts:['بيت الشاعر','بيت الخليفة','الكعبة المشرفة','البيت المقدس'], ans:2, exp:'"البيت" في القصيدة يقصد به الكعبة المشرفة'},
+    {q:'ما كناية البيت الأول؟', opts:['عن فقره','عن شهرته العظيمة وانتشارها في الآفاق','عن كرمه','عن شجاعته'], ans:1, exp:'البيت الأول كناية عن شهرة المادح العظيمة وانتشارها في كل مكان'},
+    {q:'ما الغرض من الاستفهام في "من هذا"؟', opts:['طلب المعلومة','الاستنكار — لأن الجميع يعرفه','التعجب','الإنكار'], ans:1, exp:'الاستفهام غرضه الاستنكار — لأن العرب والعجم كلهم يعرفونه'},
+    {q:'ما معنى "العجم"؟', opts:['العرب','الأقوياء','غير العرب والأعاجم','الفقراء'], ans:2, exp:'"العجم": غير العرب، والمفرد: عجمي'},
+    {q:'لماذا لم يقل الممدوح "لا" إلا في التشهد؟', opts:['لأنه لا يتكلم','لأنه كريم لا يرفض طالباً أبداً','لأنه بخيل','لأنه لا يسمع'], ans:1, exp:'لم يقل "لا" لأحد قط — كناية عن كرمه الفائق الذي لا يُحدّ'},
+    {q:'ما الجمال في البيت الثامن "ينشق ثوب الدجى"؟', opts:['تشبيه تام','استعارة مكنية — شبه الدجى بثوب ينشق','جناس','طباق'], ans:1, exp:'استعارة مكنية: الدجى شُبه بثوب ينشق عن نور وجهه — سرها التجسيم'},
+    {q:'ما معنى "الإملاق"؟', opts:['الغنى','الكرم','الفقر الشديد','التواضع'], ans:2, exp:'"الإملاق": الفقر الشديد'},
+    {q:'ما كناية البيت الثاني؟', opts:['كناية عن شجاعته','كناية عن عراقة أصله ونسبه الشريف','كناية عن علمه','كناية عن كرمه'], ans:1, exp:'البيت الثاني كناية عن عراقة الأصل والنسب الشريف للممدوح'},
+    {q:'ما مرادف "وطأته"؟', opts:['صوته','ثروته','موضع قدمه وأثره','هيئته'], ans:2, exp:'"وطأته": موضع قدمه وأثر مشيه في الأرض'},
+    {q:'من هو الفرزدق؟', opts:['شاعر عباسي','شاعر أموي من كبار شعراء الفخر والمدح','شاعر جاهلي','صحابي جليل'], ans:1, exp:'الفرزدق شاعر أموي من أعظم شعراء المدح والفخر في العصر الأموي'},
+    {q:'ما معنى "التقي"؟', opts:['الكريم الجواد','قوي الإيمان الورع عن المحارم','الشجاع','العالم'], ans:1, exp:'"التقي": قوي الإيمان، كثير التقوى والبعد عن المحارم'},
+    {q:'ما كناية البيت الأخير؟', opts:['كناية عن شهرته','كناية عن أن إحسانه عمّ البرية وأزال الفقر كالشمس','كناية عن كرمه مع قريش فقط','كناية عن علمه'], ans:1, exp:'البيت الأخير كناية عن إحسانه الذي عمّ الجميع كالشمس التي تُزيل الظلام'},
+    {q:'ما معنى "الغياهب"؟', opts:['الأضواء','الغنى','الظلمات الكثيفة المفردة: غيهب','الأفراح'], ans:2, exp:'"الغياهب": الظلمات الكثيفة، المفرد: غيهب'},
+    {q:'ما الذي لم يستطع هشام فعله في الحج؟', opts:['الصلاة في الكعبة','الوصول إلى الحجر الأسود واستلامه','الطواف حول الكعبة','السعي بين الصفا والمروة'], ans:1, exp:'لم يستطع هشام الوصول إلى الحجر الأسود واستلامه بسبب الزحام الشديد'},
+    {q:'ما الذي يفعله ضوء وجه الممدوح؟', opts:['يُعمي الأبصار','ينشق به ثوب الدجى — يُزيل الظلام','يُحرق ما حوله','لا يؤثر'], ans:1, exp:'نور غرته ينشق به ثوب الدجى — كناية عن نور وجهه الذي يُزيل الظلام'},
+    {q:'ما جمع "الغيهب"؟', opts:['الغياهيب','الغيهبات','الغياهب','الأغياهب'], ans:2, exp:'جمع "الغيهب": الغياهب'},
+    {q:'ما أبرز صفات زين العابدين في القصيدة؟', opts:['الشجاعة والقوة فقط','التقوى والنقاء والعلم والكرم والنسب الشريف','الثروة والسلطة','الجمال الجسدي فقط'], ans:1, exp:'أبرز صفاته: التقوى والنقاء والعلم والكرم الفائق والنسب الشريف من آل البيت'},
+  ]
+},
+
+grammar1: {
+  title: 'الجملة الفعلية وإعراب المضارع',
+  sub: 'القواعد النحوية',
+  tabs: ['الجملة الفعلية','المضارع المرفوع','المضارع المنصوب','المضارع المجزوم','الأسئلة والتدريبات'],
+  reading: `
+    <h2 class="section-title-big">الجملة الفعلية</h2>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">تعريف الجملة الفعلية</div>
+      <p>الجملة الفعلية هي الجملة التي تبدأ بفعل وتتكون من: <strong style="color:var(--gold)">فعل + فاعل</strong></p>
+      <div class="grammar-examples">
+        <div class="grammar-example">يتابع المشرف العمل في المصنع</div>
+        <div class="grammar-example">عاون الشعب الحكومة في نهضة الوطن</div>
+        <div class="grammar-example">ساعد زميلك في تنفيذ المشروع</div>
+      </div>
+    </div>
+    <table class="grammar-table">
+      <tr><th>علامة الرفع</th><th>الحالة</th><th>مثال</th></tr>
+      <tr><td>الضمة</td><td>إذا كان مفرداً أو جمع تكسير أو جمع مؤنث سالم</td><td>وقف المدرس — عاد الجنود — رجعت الفتيات</td></tr>
+      <tr><td>الألف</td><td>إذا كان مثنى</td><td>انتظر العاملان التقدير من صاحب العمل</td></tr>
+      <tr><td>الواو</td><td>إذا كان جمع مذكر سالم</td><td>قدّر المعلمون الطلاب المهذبين</td></tr>
+      <tr><td>الواو</td><td>إذا كان اسماً من الأسماء الخمسة</td><td>كتب ذو الموهبة نبذة عن موهبته</td></tr>
+    </table>
+  `,
+  vocab: [],
+  beauty: [],
+  quiz: [
+    {q:'الجملة الفعلية تبدأ بـ...', opts:['اسم','فعل','حرف','ظرف'], ans:1, exp:'الجملة الفعلية تبدأ بفعل وتتكون من فعل + فاعل'},
+    {q:'علامة رفع الفاعل إذا كان مثنى هي...', opts:['الضمة','الواو','الألف','النون'], ans:2, exp:'الفاعل المثنى يُرفع بالألف'},
+    {q:'علامة رفع الفاعل إذا كان جمع مذكر سالماً هي...', opts:['الضمة','الألف','النون','الواو'], ans:3, exp:'الفاعل جمع مذكر سالم يُرفع بالواو'},
+    {q:'الفعل المضارع يُرفع إذا...', opts:['سُبق بأداة نصب','سُبق بأداة جزم','لم يسبقه أداة نصب أو جزم','دائماً'], ans:2, exp:'المضارع يُرفع إذا لم يسبقه أداة نصب أو أداة جزم'},
+    {q:'أدوات نصب المضارع هي...', opts:['لم ولا ولام الأمر','أن ولن وكي ولام التعليل وحتى','إن ولو وإذا','ما وهل ولا النافية'], ans:1, exp:'أدوات النصب: أن المصدرية، لن، كي، لام التعليل، حتى'},
+    {q:'أدوات جزم المضارع هي...', opts:['أن ولن وكي وحتى','لم ولا الناهية ولام الأمر','إن ولو','ما وهل'], ans:1, exp:'أدوات الجزم: لم، لا الناهية، لام الأمر، لم الناهية'},
+    {q:'في "لن يُقصّر أحد" — علامة نصب المضارع...', opts:['الضمة','الكسرة','الفتحة الظاهرة','سكون'], ans:2, exp:'"يُقصّر" فعل مضارع منصوب بـ"لن" وعلامة نصبه الفتحة الظاهرة'},
+    {q:'في "لم يذهب الطالب" — علامة جزم المضارع...', opts:['الضمة','الفتحة','السكون على آخره','الكسرة'], ans:2, exp:'"يذهب" مضارع مجزوم بـ"لم" وعلامة جزمه السكون لأنه صحيح الآخر'},
+    {q:'الفعل المضارع المعتل الآخر بالألف يُجزم بـ...', opts:['السكون','الفتحة','حذف حرف العلة الألف','الكسرة'], ans:2, exp:'المضارع المعتل الآخر يُجزم بحذف حرف العلة'},
+    {q:'الأفعال الخمسة ترفع بـ...', opts:['الضمة','الواو','ثبوت النون','الألف'], ans:2, exp:'الأفعال الخمسة ترفع بثبوت النون'},
+    {q:'الأفعال الخمسة تُنصب وتُجزم بـ...', opts:['الفتحة والسكون','حذف النون','الألف','الواو'], ans:1, exp:'الأفعال الخمسة تُنصب وتُجزم بحذف النون'},
+    {q:'الفعل "يسعى" مضارع — علامة رفعه...', opts:['الضمة الظاهرة','الضمة المقدرة على الألف منع ظهورها التعذر','الفتحة','السكون'], ans:1, exp:'"يسعى" مضارع مرفوع وعلامة رفعه الضمة المقدرة على الألف منع ظهورها التعذر'},
+    {q:'"أن تدرس خيرٌ لك" — "تدرس" فعل مضارع...', opts:['مرفوع','منصوب بـ"أن"','مجزوم','مبني'], ans:1, exp:'"تدرس" فعل مضارع منصوب بـ"أن" المصدرية وعلامة نصبه الفتحة'},
+    {q:'الجملة "ساعدَ زميلُك" — الفاعل هو...', opts:['ساعد','زميل','الكاف في زميلك','زميلك'], ans:3, exp:'الفاعل هو "زميلك" وهو مرفوع وعلامة رفعه الضمة'},
+    {q:'في "لا تهملوا دروسكم" — "تهملوا" فعل...', opts:['مرفوع','منصوب','مجزوم بلا الناهية وعلامة جزمه حذف النون','مبني'], ans:2, exp:'"تهملوا" فعل مضارع مجزوم بـ"لا الناهية" وعلامة جزمه حذف النون لأنه من الأفعال الخمسة'},
+    {q:'علامة رفع الفاعل المفرد...', opts:['الألف','الواو','الضمة','السكون'], ans:2, exp:'الفاعل المفرد يُرفع بالضمة الظاهرة أو المقدرة'},
+    {q:'"كي تنجح" — "تنجح" منصوب لأنه سُبق بـ...', opts:['لن','أن','كي حرف التعليل والنصب','لام التعليل'], ans:2, exp:'"تنجح" منصوب بـ"كي" حرف التعليل ونصب المضارع'},
+    {q:'من أمثلة الأسماء الخمسة التي يرفع فاعلها بالواو...', opts:['كلمة كتاب','كلمة ذو — مثل: ذو الموهبة','كلمة طالب','كلمة علم'], ans:1, exp:'"ذو" من الأسماء الخمسة التي تُرفع بالواو مثل: جاء ذو الموهبة'},
+    {q:'"حتى تنجح" — "تنجح" فعل مضارع...', opts:['مرفوع','مجزوم','منصوب بـ"حتى"','مبني'], ans:2, exp:'"تنجح" منصوب بـ"حتى" حرف الغاية والتعليل'},
+    {q:'جملة "رجعتِ الفتياتُ مسرورات" — الفاعل هو...', opts:['رجعتِ','مسرورات','الفتيات','جملة اسمية'], ans:2, exp:'الفاعل هو "الفتيات" وهو جمع مؤنث سالم مرفوع بالضمة'},
+    {q:'ما إعراب "طلاب" في "جاء الطلاب"؟', opts:['مفعول به','فاعل مرفوع وعلامة رفعه الضمة','مبتدأ','خبر'], ans:1, exp:'"الطلاب" فاعل مرفوع وعلامة رفعه الضمة الظاهرة على آخره'},
+  ]
+},
+
+grammar2: {
+  title: 'الأفعال الخمسة ونائب الفاعل',
+  sub: 'القواعد النحوية',
+  tabs: ['الأفعال الخمسة','نائب الفاعل','الأسئلة والتدريبات'],
+  reading: `
+    <h2 class="section-title-big">الأفعال الخمسة</h2>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">تعريف الأفعال الخمسة</div>
+      <p>الأفعال الخمسة هي كل فعل مضارع اتصلت به: <strong style="color:var(--gold)">ألف الاثنين، أو واو الجماعة، أو ياء المخاطبة</strong></p>
+      <div class="grammar-examples">
+        <div class="grammar-example">أنتما تدافعان عن الحق</div>
+        <div class="grammar-example">الذين يدافعون عن الحق لا يغلبون</div>
+        <div class="grammar-example">أنتِ تدافعين عن الحق</div>
+      </div>
+    </div>
+    <table class="grammar-table">
+      <tr><th>الحالة</th><th>العلامة</th><th>مثال</th></tr>
+      <tr><td>الرفع</td><td>ثبوت النون</td><td>هما يتعلمان — هم يتعلمون — أنتِ تتعلمين</td></tr>
+      <tr><td>النصب</td><td>حذف النون</td><td>لن يتعلما — لن يتعلموا — لن تتعلمي</td></tr>
+      <tr><td>الجزم</td><td>حذف النون</td><td>لم يتعلما — لم يتعلموا — لم تتعلمي</td></tr>
+    </table>
+    <h2 class="section-title-big" style="margin-top:32px;">نائب الفاعل</h2>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">تعريف نائب الفاعل</div>
+      <p>نائب الفاعل هو الاسم المرفوع الذي يحل محل الفاعل بعد حذفه، وذلك في جملة الفعل المبني للمجهول.</p>
+      <p style="margin-top:12px;color:rgba(255,255,255,0.7);">جملة المبني للمجهول = فعل مبني للمجهول + نائب الفاعل</p>
+      <div class="grammar-examples">
+        <div class="grammar-example">شُرِّخَ الدرسُ في الفصل (أصلها: شرح المعلمُ الدرسَ)</div>
+        <div class="grammar-example">صُنع الصاروخ للذهاب إلى الفضاء</div>
+        <div class="grammar-example">يُقال في الحكمة كثير</div>
+      </div>
+    </div>
+    <table class="grammar-table">
+      <tr><th>علامة الرفع</th><th>الحالة</th><th>مثال</th></tr>
+      <tr><td>الضمة</td><td>مفرد أو جمع تكسير أو جمع مؤنث سالم</td><td>صُنع الصاروخُ — شُكرت العاملاتُ</td></tr>
+      <tr><td>الألف</td><td>مثنى</td><td>عُرف المجتهدان بعملهما</td></tr>
+      <tr><td>الواو</td><td>جمع مذكر سالم أو اسم من الأسماء الخمسة</td><td>عُلِّم المزارعون كيفية الزراعة</td></tr>
+    </table>
+  `,
+  vocab: [],
+  beauty: [],
+  quiz: [
+    {q:'الأفعال الخمسة هي كل فعل مضارع اتصل به...', opts:['تاء التأنيث','ألف الاثنين أو واو الجماعة أو ياء المخاطبة','نون التوكيد','هاء الغائب'], ans:1, exp:'الأفعال الخمسة تتصل بها: ألف الاثنين أو واو الجماعة أو ياء المخاطبة'},
+    {q:'الأفعال الخمسة ترفع بـ...', opts:['الضمة','الواو','ثبوت النون','الألف'], ans:2, exp:'الأفعال الخمسة ترفع بثبوت النون'},
+    {q:'الأفعال الخمسة تُنصب وتُجزم بـ...', opts:['الفتحة','حذف النون','السكون','الكسرة'], ans:1, exp:'الأفعال الخمسة تُنصب وتُجزم بحذف النون'},
+    {q:'في "الطلاب يتعاونون" — "يتعاونون" ترفع بـ...', opts:['الضمة','ثبوت النون لأنها من الأفعال الخمسة','الواو','السكون'], ans:1, exp:'"يتعاونون" فعل مضارع مرفوع وعلامة رفعه ثبوت النون لأنه من الأفعال الخمسة'},
+    {q:'نائب الفاعل هو...', opts:['الفاعل الأصلي','اسم مرفوع يحل محل الفاعل بعد حذفه في جملة المبني للمجهول','الفعل','المفعول به'], ans:1, exp:'نائب الفاعل هو الاسم المرفوع الذي يحل محل الفاعل بعد حذفه'},
+    {q:'جملة المبني للمجهول تتكون من...', opts:['فعل معلوم + فاعل','فعل مبني للمجهول + نائب الفاعل','مبتدأ + خبر','فاعل + مفعول'], ans:1, exp:'جملة المبني للمجهول: فعل مبني للمجهول + نائب الفاعل'},
+    {q:'ما التغيير في الفعل الماضي عند البناء للمجهول؟', opts:['يُفتح أوله ويُكسر ما قبل آخره','يُضم أوله ويُكسر ما قبل آخره','يُكسر أوله ويُفتح آخره','لا يتغير'], ans:1, exp:'الفعل الماضي عند البناء للمجهول: يُضم أوله ويُكسر ما قبل آخره'},
+    {q:'ما التغيير في الفعل المضارع عند البناء للمجهول؟', opts:['يُضم أوله ويُفتح ما قبل آخره','يُكسر أوله','يُفتح أوله','لا يتغير'], ans:0, exp:'الفعل المضارع عند البناء للمجهول: يُضم أوله ويُفتح ما قبل آخره'},
+    {q:'في "شُرِّح الدرسُ" — "الدرسُ" هو...', opts:['فاعل','مفعول به','نائب فاعل مرفوع وعلامة رفعه الضمة','مبتدأ'], ans:2, exp:'"الدرسُ" نائب فاعل مرفوع وعلامة رفعه الضمة الظاهرة'},
+    {q:'"لن يتعاونا في المشروع" — "يتعاونا" منصوب وعلامة نصبه...', opts:['الفتحة','السكون','حذف النون لأنه من الأفعال الخمسة','الكسرة'], ans:2, exp:'"يتعاونا" فعل مضارع منصوب بـ"لن" وعلامة نصبه حذف النون لأنه من الأفعال الخمسة'},
+    {q:'"لم يتعاونوا" — "يتعاونوا" مجزوم وعلامة جزمه...', opts:['السكون','الفتحة','حذف النون لأنه من الأفعال الخمسة','الكسرة'], ans:2, exp:'"يتعاونوا" مجزوم بـ"لم" وعلامة جزمه حذف النون لأنه من الأفعال الخمسة'},
+    {q:'علامة رفع نائب الفاعل إذا كان مثنى...', opts:['الضمة','الواو','الألف','السكون'], ans:2, exp:'نائب الفاعل المثنى يُرفع بالألف'},
+    {q:'علامة رفع نائب الفاعل إذا كان جمع مذكر سالماً...', opts:['الضمة','الألف','النون','الواو'], ans:3, exp:'نائب الفاعل جمع مذكر سالم يُرفع بالواو'},
+    {q:'"حُوِّلَ المفعولُ به إلى نائب فاعل" — ما الذي يحدث للمفعول به؟', opts:['يصبح فاعلاً','يُحذف','يصبح نائب فاعل مرفوع ويُحذف الفاعل','لا يتغير'], ans:2, exp:'المفعول به يتحول إلى نائب فاعل مرفوع ويُحذف الفاعل'},
+    {q:'في "أنتِ تدرسين" — "تدرسين" من الأفعال الخمسة لأنه اتصلت به...', opts:['ألف الاثنين','واو الجماعة','ياء المخاطبة','تاء التأنيث'], ans:2, exp:'"تدرسين" من الأفعال الخمسة لأنه اتصلت به ياء المخاطبة'},
+    {q:'حوّل الجملة إلى مبني للمجهول: "يزرع الطلاب الحديقة"', opts:['يُزرع الطلابُ الحديقةَ','تُزرع الحديقةُ','يُزرع الحديقةُ','الحديقة مزروعة'], ans:1, exp:'تُزرع الحديقةُ — المفعول به "الحديقة" يصبح نائب فاعل مرفوع'},
+    {q:'في "عُلِّم المزارعون كيفية الزراعة" — "المزارعون" نائب فاعل يُرفع بـ...', opts:['الضمة','الألف','الواو لأنه جمع مذكر سالم','النون'], ans:2, exp:'"المزارعون" نائب فاعل مرفوع وعلامة رفعه الواو لأنه جمع مذكر سالم'},
+    {q:'من أمثلة الفعل المبني للمجهول في المضارع...', opts:['كتب','يَكتب','يُكتب','اكتب'], ans:2, exp:'"يُكتب" فعل مضارع مبني للمجهول — ضُم أوله وفُتح ما قبل آخره'},
+    {q:'"هما يتعلمان" — "يتعلمان" مرفوع وعلامة رفعه...', opts:['الضمة','الألف','ثبوت النون لأنه من الأفعال الخمسة','الواو'], ans:2, exp:'"يتعلمان" مرفوع وعلامة رفعه ثبوت النون لأنه من الأفعال الخمسة'},
+    {q:'جملة "شُكِرت العاملاتُ على جهدهن" — "العاملات" هي...', opts:['فاعل','مفعول به','نائب فاعل مرفوع وعلامة رفعه الضمة','مبتدأ'], ans:2, exp:'"العاملات" نائب فاعل مرفوع وعلامة رفعه الضمة الظاهرة'},
+  ]
+},
+
+spelling: {
+  title: 'الهمزة المتطرفة',
+  sub: 'قواعد الكتابة والإملاء',
+  tabs: ['القاعدة والأمثلة','الأسئلة والتدريبات'],
+  reading: `
+    <h2 class="section-title-big">الهمزة المتطرفة</h2>
+    <p class="section-subtitle">الهمزة التي تقع في آخر الكلمة</p>
+    <div class="grammar-rule">
+      <div class="grammar-rule-title">القاعدة الأساسية</div>
+      <p>ترسم الهمزة المتطرفة على حرف من جنس حركة الحرف الذي قبلها</p>
+    </div>
+    <table class="grammar-table">
+      <tr><th>حركة ما قبل الهمزة</th><th>رسم الهمزة</th><th>أمثلة</th></tr>
+      <tr><td>مكسور</td><td>على ياء (ئ)</td><td>امرئ — ينئ — مبادئ — تهانئ</td></tr>
+      <tr><td>مضموم</td><td>على واو (ؤ)</td><td>لؤلؤ — تباطؤ — تهيؤ — امرؤ — تكافؤ</td></tr>
+      <tr><td>مفتوح</td><td>على ألف (أ) أو (آ)</td><td>بدأ — لجأ — قرأ — هيأ — بطأ</td></tr>
+      <tr><td>ساكن (صحيح)</td><td>مفردة على السطر</td><td>بدء — جزء — دفء — شيء — ضوء</td></tr>
+      <tr><td>آخر الكلمة مفتوح وما قبلها مفتوح</td><td>على ألف</td><td>بدأ — أبطأ — أسوأ — ملأ</td></tr>
+      <tr><td>آخرها مضموم وما قبلها مضموم</td><td>على واو</td><td>امرؤ — اللؤلؤ — التباطؤ</td></tr>
+      <tr><td>آخرها مكسور وما قبلها مكسور</td><td>على ياء</td><td>تخطئ — تبطئ — يُلجئ</td></tr>
+      <tr><td>ما قبلها ساكن وهو حرف مد أو صحيح ساكن</td><td>مفردة</td><td>شيء — مرء — ملء — بريء</td></tr>
+    </table>
+    <div class="summary-box" style="margin-top:24px;">
+      <div class="summary-title">ملاحظات مهمة</div>
+      <ul class="summary-list">
+        <li>الهمزة المتطرفة ترسم على حرف من جنس حركة ما قبلها</li>
+        <li>إذا كان الحرف قبلها ساكناً رُسمت مفردة على السطر</li>
+        <li>كلمات مثل: ضوء، جاء، باء، شاء، ساء، سماء، بناء، صفاء — همزتها مفردة لأن قبلها حرف مد</li>
+      </ul>
+    </div>
+  `,
+  vocab: [],
+  beauty: [],
+  quiz: [
+    {q:'الهمزة في "امرئ" ترسم على ياء لأن...', opts:['ما قبلها مضموم','ما قبلها مكسور','ما قبلها مفتوح','ما قبلها ساكن'], ans:1, exp:'"امرئ" همزتها على ياء لأن الحرف الذي قبلها مكسور'},
+    {q:'الهمزة في "لؤلؤ" ترسم على...', opts:['ألف','ياء','واو لأن ما قبلها مضموم','السطر'], ans:2, exp:'"لؤلؤ" همزتها على واو لأن ما قبلها مضموم'},
+    {q:'الهمزة في "بدأ" ترسم على...', opts:['واو','ياء','ألف لأن ما قبلها مفتوح','السطر'], ans:2, exp:'"بدأ" همزتها على ألف لأن ما قبلها مفتوح'},
+    {q:'الهمزة في "شيء" ترسم على...', opts:['ألف','واو','ياء','السطر مفردة لأن ما قبلها ساكن حرف مد'], ans:3, exp:'"شيء" همزتها مفردة على السطر لأن ما قبلها ساكن (حرف مد)'},
+    {q:'الهمزة في "ضوء" ترسم على...', opts:['ألف','واو','ياء','مفردة على السطر لأن ما قبلها حرف مد ساكن'], ans:3, exp:'"ضوء" همزتها مفردة على السطر لأن ما قبلها واو المد الساكنة'},
+    {q:'الهمزة في "تخطئ" ترسم على...', opts:['ألف','واو','ياء لأن ما قبلها مكسور','السطر'], ans:2, exp:'"تخطئ" همزتها على ياء لأن الحرف قبلها مكسور'},
+    {q:'القاعدة العامة لرسم الهمزة المتطرفة هي...', opts:['ترسم دائماً على ألف','ترسم دائماً على واو','ترسم على حرف من جنس حركة ما قبلها','ترسم دائماً مفردة'], ans:2, exp:'ترسم الهمزة المتطرفة على حرف من جنس حركة الحرف الذي قبلها'},
+    {q:'الهمزة في "امرؤ" ترسم على...', opts:['ألف','ياء','واو لأن ما قبلها مضموم','السطر'], ans:2, exp:'"امرؤ" همزتها على واو لأن الحرف قبلها مضموم'},
+    {q:'الهمزة في "مبادئ" ترسم على...', opts:['ألف','واو','ياء لأن ما قبلها مكسور','السطر'], ans:2, exp:'"مبادئ" همزتها على ياء لأن الحرف قبلها مكسور'},
+    {q:'الهمزة في "سماء" ترسم...', opts:['على ألف','على واو','على ياء','مفردة على السطر'], ans:3, exp:'"سماء" همزتها مفردة على السطر لأن ما قبلها ألف المد الساكنة'},
+    {q:'الهمزة في "جاء" ترسم...', opts:['على ألف','على واو','على ياء','مفردة على السطر'], ans:3, exp:'"جاء" همزتها مفردة على السطر لأن ما قبلها ألف المد الساكنة'},
+    {q:'"تهيؤ" همزتها على واو لأن...', opts:['ما قبلها مفتوح','ما قبلها مكسور','ما قبلها مضموم','ما قبلها ساكن'], ans:2, exp:'"تهيؤ" الهمزة على واو لأن ما قبلها مضموم'},
+    {q:'الهمزة في "دفء" ترسم...', opts:['على ألف','على واو','على ياء','مفردة على السطر لأن ما قبلها فاء ساكنة'], ans:3, exp:'"دفء" همزتها مفردة على السطر لأن ما قبلها حرف صحيح ساكن'},
+    {q:'"بريء" همزتها...', opts:['على ألف','على واو','على ياء','مفردة لأن قبلها ياء مد ساكنة'], ans:3, exp:'"بريء" همزتها مفردة على السطر لأن ما قبلها ياء المد الساكنة'},
+    {q:'الهمزة في "قرأ" ترسم على...', opts:['واو','ياء','ألف لأن ما قبلها مفتوح','السطر'], ans:2, exp:'"قرأ" همزتها على ألف لأن ما قبلها حرف مفتوح (الراء مفتوحة)'},
+    {q:'"ملء" همزتها...', opts:['على ألف','على واو','على ياء','مفردة لأن قبلها لام ساكنة'], ans:3, exp:'"ملء" همزتها مفردة على السطر لأن ما قبلها لام ساكنة صحيحة'},
+    {q:'الهمزة في "تكافؤ" ترسم على...', opts:['ألف','ياء','واو لأن ما قبلها مضموم','السطر'], ans:2, exp:'"تكافؤ" همزتها على واو لأن الحرف قبلها مضموم'},
+    {q:'ما الصواب: "أخطاء" أم "أخطاء"؟ وما السبب؟', opts:['أخطاء — لأن ما قبلها مضموم','أخطاء — لأن ما قبلها ألف مد ساكنة فترسم مفردة','أخطأ — لأن ما قبلها مفتوح','لا فرق'], ans:1, exp:'"أخطاء" همزتها مفردة لأن قبلها ألف مد ساكنة فتكون مفردة على السطر'},
+    {q:'الهمزة في "هيأ" ترسم على...', opts:['واو','ياء','ألف لأن ما قبلها مفتوح','السطر'], ans:2, exp:'"هيأ" همزتها على ألف لأن الحرف الذي قبلها (الياء) مفتوح'},
+    {q:'الكلمة التي همزتها على واو من قائمة:',opts:['"مبادئ"','"لؤلؤ"','"بريء"','"شيء"'],ans:1,exp:'"لؤلؤ" همزتها على واو — الباقيات همزتها مفردة أو على ياء'},
+  ]
+}
+
+};
+
+// ============================================================
+//  COMPREHENSIVE EXAM — 100 questions (10 from each lesson)
+// ============================================================
+function buildExamQuestions() {
+  const all = [];
+  Object.values(LESSONS).forEach(l => {
+    const q = l.quiz.slice(0, 10);
+    q.forEach(item => all.push({...item, lesson: l.title}));
+  });
+  // shuffle
+  for (let i = all.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [all[i], all[j]] = [all[j], all[i]];
+  }
+  return all.slice(0, 100);
+}
+
+// ============================================================
+//  STATE
+// ============================================================
+const PANEL_SELECTOR = '.content-panel';
+let currentLesson = null;
+let currentTab = 0;
+let quizState = { q: 0, answers: [], done: false };
+let examState = { questions: [], q: 0, answers: [], done: false, timerInterval: null, seconds: 0 };
+
+function renderVocabHtml() {
+  if (!currentLesson.vocab || !currentLesson.vocab.length) {
+    return '<p style="color:var(--text-muted);padding:40px 0;text-align:center;">لا توجد مفردات محددة لهذا القسم</p>';
+  }
+  let html = `<h2 class="section-title-big">معاني الكلمات</h2><p class="section-subtitle">${currentLesson.sub}</p><div class="vocab-grid">`;
+  currentLesson.vocab.forEach(v => {
+    html += `<div class="vocab-card"><div class="vocab-word">${v.word}</div><div class="vocab-meaning">${v.meaning}</div></div>`;
+  });
+  return html + '</div>';
+}
+
+function renderBeautyHtml() {
+  if (!currentLesson.beauty || !currentLesson.beauty.length) {
+    return '<p style="color:var(--text-muted);padding:40px 0;text-align:center;">انظر قسم القراءة للتفاصيل الأدبية والبلاغية</p>';
+  }
+  let html = `<h2 class="section-title-big">مظاهر الجمال الأدبي</h2><p class="section-subtitle">الصور البلاغية والجماليات الأسلوبية</p>`;
+  currentLesson.beauty.forEach((b, i) => {
+    html += `<div class="beauty-card">
+      <div class="beauty-num">${i + 1}</div>
+      <div class="beauty-body">
+        <span class="beauty-type">${b.type}</span>
+        <div class="beauty-quote">${b.quote}</div>
+        <div class="beauty-explain">${b.explain}</div>
+      </div>
+    </div>`;
+  });
+  return html;
+}
+
+// ============================================================
+//  NAVIGATION
+// ============================================================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function goHome() {
+  if (examState.timerInterval) clearInterval(examState.timerInterval);
+  showScreen('home');
+}
+
+// ============================================================
+//  LESSON
+// ============================================================
+function openLesson(id) {
+  currentLesson = LESSONS[id];
+  quizState = { q: 0, answers: new Array(currentLesson.quiz.length).fill(null), done: false };
+  currentTab = 0;
+
+  document.getElementById('lesson-nav-title').textContent = currentLesson.title;
+  document.getElementById('lesson-nav-sub').textContent = currentLesson.sub;
+
+  buildLessonTabs();
+  showLessonTab(0);
+  showScreen('lesson-page');
+}
+
+function buildLessonTabs() {
+  const tabs = document.getElementById('lesson-tabs');
+  tabs.innerHTML = '';
+  currentLesson.tabs.forEach((t, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'lesson-tab' + (i === 0 ? ' active' : '');
+    btn.textContent = t;
+    btn.onclick = () => showLessonTab(i);
+    tabs.appendChild(btn);
+  });
+}
+
+function showLessonTab(idx) {
+  if (!currentLesson) return;
+  
+  currentTab = idx;
+  document.querySelectorAll('.lesson-tab').forEach((b, i) => b.classList.toggle('active', i === idx));
+
+  const content = document.getElementById('lesson-content');
+  content.classList.add('fade-out');
+  
+  setTimeout(() => {
+    const tabName = currentLesson.tabs[idx];
+
+    if (tabName === 'الأسئلة والتدريبات') {
+      content.innerHTML = renderQuizHtml();
+    } else if (tabName === 'القراءة' || tabName === 'النص' || tabName === 'النص الشعري') {
+      content.innerHTML = `<h2 class="section-title-big">${tabName}</h2><p class="section-subtitle">${currentLesson.sub}</p>` + currentLesson.reading;
+    } else if (tabName === 'مظاهر الجمال') {
+      content.innerHTML = renderBeautyHtml();
+    } else if (tabName === 'معاني الكلمات') {
+      content.innerHTML = renderVocabHtml();
+    } else {
+      content.innerHTML = currentLesson.reading || '<p>القسم قيد التحديث</p>';
+    }
+    
+    content.classList.remove('fade-out');
+    content.classList.add('fade-in');
+    
+    setTimeout(() => content.classList.remove('fade-in'), 400);
+  }, 200);
+}
+
+function renderVocabHtml() {
+  if (!currentLesson.vocab || !currentLesson.vocab.length) {
+    return '<p style="color:var(--text-muted);padding:40px 0;text-align:center;">لا توجد مفردات محددة لهذا القسم</p>';
+  }
+  let html = `<h2 class="section-title-big">معاني الكلمات</h2><p class="section-subtitle">${currentLesson.sub}</p><div class="vocab-grid">`;
+  currentLesson.vocab.forEach(v => {
+    html += `<div class="vocab-card"><div class="vocab-word">${v.word}</div><div class="vocab-meaning">${v.meaning}</div></div>`;
+  });
+  return html + '</div>';
+}
+
+function renderQuizHtml() {
+  const qs = currentLesson.quiz;
+  const s = quizState;
+
+  if (s.done) {
+    const score = s.answers.filter((a, i) => a === qs[i].ans).length;
+    const pct = Math.round(score / qs.length * 100);
+    const cls = pct >= 85 ? 'excellent' : pct >= 60 ? 'good' : 'weak';
+    const msg = pct >= 85 ? 'ممتاز! أداء رائع 🌟' : pct >= 60 ? 'جيد، يمكنك التحسين 💪' : 'راجع الدرس مرة أخرى 📚';
+    return `
+      <div class="quiz-container">
+        <div class="result-card">
+          <div class="result-circle ${cls}">${pct}%</div>
+          <div class="result-msg">${msg}</div>
+          <div class="result-sub">أجبت على ${score} من ${qs.length} سؤال بشكل صحيح</div>
+          <div class="quiz-nav">
+            <button class="btn-primary" onclick="restartQuiz()">أعد الأسئلة</button>
+            <button class="btn-secondary" onclick="showLessonTab(${currentLesson.tabs.indexOf('القراءة') >= 0 ? currentLesson.tabs.indexOf('القراءة') : 0})">راجع الدرس</button>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  const q = qs[s.q];
+  const pct = Math.round((s.q / qs.length) * 100);
+  const answered = s.answers[s.q] !== null;
+
+  let optsHtml = '';
+  q.opts.forEach((o, i) => {
+    let cls = 'q-option';
+    if (answered) {
+      if (i === q.ans) cls += ' correct';
+      else if (i === s.answers[s.q]) cls += ' wrong';
+      cls += ' answered';
+    } else if (i === s.answers[s.q]) cls += ' selected';
+    optsHtml += `<div class="${cls}" onclick="selectAnswer(${i})">${o}</div>`;
+  });
+
+  return `
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <div class="quiz-title">أسئلة الدرس</div>
+        <div class="quiz-info">سؤال ${s.q + 1} من ${qs.length}</div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="question-card">
+        <div class="q-num">سؤال رقم ${s.q + 1}</div>
+        <div class="q-text">${q.q}</div>
+        <div class="q-options">${optsHtml}</div>
+        <div class="q-explanation ${answered ? 'show' : ''}">💡 ${q.exp}</div>
+      </div>
+      <div class="quiz-nav">
+        ${s.q > 0 ? `<button class="btn-secondary" onclick="prevQ()">السابق</button>` : ''}
+        ${answered ? (s.q < qs.length - 1 ? `<button class="btn-primary" onclick="nextQ()">التالي ←</button>` : `<button class="btn-primary" onclick="finishQuiz()">عرض النتيجة 🏆</button>`) : ''}
+      </div>
+    </div>`;
+}
+
+
+function renderQuiz(container) {
+  const qs = currentLesson.quiz;
+  const s = quizState;
+
+  if (s.done) {
+    const score = s.answers.filter((a, i) => a === qs[i].ans).length;
+    const pct = Math.round(score / qs.length * 100);
+    const cls = pct >= 85 ? 'excellent' : pct >= 60 ? 'good' : 'weak';
+    const msg = pct >= 85 ? 'ممتاز! أداء رائع 🌟' : pct >= 60 ? 'جيد، يمكنك التحسين 💪' : 'راجع الدرس مرة أخرى 📚';
+    container.innerHTML = `
+      <div class="quiz-container">
+        <div class="result-card">
+          <div class="result-circle ${cls}">${pct}%</div>
+          <div class="result-msg">${msg}</div>
+          <div class="result-sub">أجبت على ${score} من ${qs.length} سؤال بشكل صحيح</div>
+          <div class="quiz-nav">
+            <button class="btn-primary" onclick="restartQuiz()">أعد الأسئلة</button>
+            <button class="btn-secondary" onclick="showLessonTab(${currentLesson.tabs.indexOf('القراءة') >= 0 ? currentLesson.tabs.indexOf('القراءة') : 0})">راجع الدرس</button>
+          </div>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const q = qs[s.q];
+  const pct = Math.round((s.q / qs.length) * 100);
+  const answered = s.answers[s.q] !== null;
+
+  let optsHtml = '';
+  q.opts.forEach((o, i) => {
+    let cls = 'q-option';
+    if (answered) {
+      if (i === q.ans) cls += ' correct';
+      else if (i === s.answers[s.q]) cls += ' wrong';
+      cls += ' answered';
+    } else if (i === s.answers[s.q]) cls += ' selected';
+    optsHtml += `<div class="${cls}" onclick="selectAnswer(${i})">${o}</div>`;
+  });
+
+  container.innerHTML = `
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <div class="quiz-title">أسئلة الدرس</div>
+        <div class="quiz-info">سؤال ${s.q + 1} من ${qs.length}</div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="question-card">
+        <div class="q-num">سؤال رقم ${s.q + 1}</div>
+        <div class="q-text">${q.q}</div>
+        <div class="q-options">${optsHtml}</div>
+        <div class="q-explanation ${answered ? 'show' : ''}">💡 ${q.exp}</div>
+      </div>
+      <div class="quiz-nav">
+        ${s.q > 0 ? `<button class="btn-secondary" onclick="prevQ()">السابق</button>` : ''}
+        ${answered ? (s.q < qs.length - 1 ? `<button class="btn-primary" onclick="nextQ()">التالي ←</button>` : `<button class="btn-primary" onclick="finishQuiz()">عرض النتيجة 🏆</button>`) : ''}
+      </div>
+    </div>`;
+}
+
+function selectAnswer(i) {
+  if (quizState.answers[quizState.q] !== null) return;
+  quizState.answers[quizState.q] = i;
+  renderQuiz(document.getElementById('lesson-content'));
+}
+
+function nextQ() {
+  if (quizState.q < currentLesson.quiz.length - 1) {
+    quizState.q++;
+    renderQuiz(document.getElementById('lesson-content'));
+  }
+}
+
+function prevQ() {
+  if (quizState.q > 0) {
+    quizState.q--;
+    renderQuiz(document.getElementById('lesson-content'));
+  }
+}
+
+function finishQuiz() {
+  quizState.done = true;
+  renderQuiz(document.getElementById('lesson-content'));
+}
+
+function restartQuiz() {
+  quizState = { q: 0, answers: new Array(currentLesson.quiz.length).fill(null), done: false };
+  renderQuiz(document.getElementById('lesson-content'));
+}
+
+// ============================================================
+//  EXAM
+// ============================================================
+function openExam() {
+  const questions = buildExamQuestions();
+  examState = { questions, q: 0, answers: new Array(questions.length).fill(null), done: false, timerInterval: null, seconds: 0 };
+  renderExamIntro();
+  showScreen('exam-page');
+}
+
+function renderExamIntro() {
+  document.getElementById('exam-timer').textContent = '00:00';
+  document.getElementById('exam-content').innerHTML = `
+    <div class="exam-intro">
+      <div class="exam-intro-icon">🏆</div>
+      <div class="exam-intro-title">الامتحان الشامل</div>
+      <div class="exam-intro-sub">امتحان شامل يغطي جميع دروس الكتاب — تأكد من مذاكرة كل الدروس قبل البدء</div>
+      <div class="exam-stats">
+        <div class="exam-stat"><div class="exam-stat-num">100</div><div class="exam-stat-label">سؤال</div></div>
+        <div class="exam-stat"><div class="exam-stat-num">9</div><div class="exam-stat-label">دروس</div></div>
+        <div class="exam-stat"><div class="exam-stat-num">∞</div><div class="exam-stat-label">محاولة</div></div>
+      </div>
+      <button class="btn-primary" onclick="startExam()" style="font-size:18px;padding:16px 48px;">ابدأ الامتحان الآن</button>
+    </div>`;
+}
+
+function startExam() {
+  examState.seconds = 0;
+  examState.timerInterval = setInterval(() => {
+    examState.seconds++;
+    const m = String(Math.floor(examState.seconds / 60)).padStart(2, '0');
+    const s = String(examState.seconds % 60).padStart(2, '0');
+    document.getElementById('exam-timer').textContent = m + ':' + s;
+  }, 1000);
+  renderExamQuestion();
+}
+
+function renderExamQuestion() {
+  const qs = examState.questions;
+  const s = examState;
+
+  if (s.done) {
+    clearInterval(s.timerInterval);
+    const score = s.answers.filter((a, i) => a === qs[i].ans).length;
+    const pct = Math.round(score / qs.length * 100);
+    const cls = pct >= 85 ? 'excellent' : pct >= 60 ? 'good' : 'weak';
+    const msg = pct >= 85 ? 'ممتاز! تفوقت على الامتحان الشامل 🌟' : pct >= 60 ? 'جيد، راجع ما أخطأت فيه 💪' : 'راجع الدروس الضعيفة وحاول مجدداً 📚';
+    const m = String(Math.floor(s.seconds / 60)).padStart(2, '0');
+    const sec = String(s.seconds % 60).padStart(2, '0');
+    document.getElementById('exam-content').innerHTML = `
+      <div class="result-card">
+        <div class="result-circle ${cls}">${pct}%</div>
+        <div class="result-msg">${msg}</div>
+        <div class="result-sub">أجبت على ${score} من ${qs.length} سؤال بشكل صحيح • الوقت: ${m}:${sec}</div>
+        <div style="margin-top:24px;">
+          <div class="quiz-nav">
+            <button class="btn-primary" onclick="openExam()">امتحان جديد</button>
+            <button class="btn-secondary" onclick="goHome()">الرئيسية</button>
+          </div>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const q = qs[s.q];
+  const pct = Math.round((s.q / qs.length) * 100);
+  const answered = s.answers[s.q] !== null;
+
+  let optsHtml = '';
+  q.opts.forEach((o, i) => {
+    let cls = 'q-option';
+    if (answered) {
+      if (i === q.ans) cls += ' correct';
+      else if (i === s.answers[s.q]) cls += ' wrong';
+      cls += ' answered';
+    }
+    optsHtml += `<div class="${cls}" onclick="examSelectAnswer(${i})">${o}</div>`;
+  });
+
+  document.getElementById('exam-content').innerHTML = `
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <div class="quiz-title">الامتحان الشامل</div>
+        <div class="quiz-info">سؤال ${s.q + 1} من ${qs.length} • من درس: ${q.lesson}</div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="question-card">
+        <div class="q-num">سؤال رقم ${s.q + 1}</div>
+        <div class="q-text">${q.q}</div>
+        <div class="q-options">${optsHtml}</div>
+        ${answered ? `<div class="q-explanation show">💡 ${q.exp}</div>` : ''}
+      </div>
+      <div class="quiz-nav">
+        ${s.q > 0 ? `<button class="btn-secondary" onclick="examPrevQ()">السابق</button>` : ''}
+        ${answered ? (s.q < qs.length - 1 ? `<button class="btn-primary" onclick="examNextQ()">التالي ←</button>` : `<button class="btn-primary" onclick="examFinish()">عرض النتيجة 🏆</button>`) : ''}
+      </div>
+    </div>`;
+}
+
+function examSelectAnswer(i) {
+  if (examState.answers[examState.q] !== null) return;
+  examState.answers[examState.q] = i;
+  renderExamQuestion();
+}
+
+function examNextQ() {
+  if (examState.q < examState.questions.length - 1) {
+    examState.q++;
+    renderExamQuestion();
+  }
+}
+
+function examPrevQ() {
+  if (examState.q > 0) {
+    examState.q--;
+    renderExamQuestion();
+  }
+}
+
+function examFinish() {
+  examState.done = true;
+  renderExamQuestion();
+}
+</script>
+</body>
+</html>

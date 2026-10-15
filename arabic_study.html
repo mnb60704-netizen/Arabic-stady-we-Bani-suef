@@ -196,15 +196,19 @@ body {
   z-index: 0;
 }
 
-.lesson-card:hover {
+.lesson-card:hover,
+.lesson-card:focus-visible {
   transform: translateY(-6px) scale(1.02);
   border-color: var(--gold);
   background: rgba(255,255,255,0.12);
   box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 30px rgba(201,168,76,0.3);
   animation: pulseGlow 1.5s infinite;
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
 }
 
 .lesson-card:hover::before,
+.lesson-card:focus-visible::before,
 .lesson-card:active::before {
   opacity: 1;
   animation: ripple 0.6s ease-out;
@@ -1071,7 +1075,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('fish')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('fish')">
         <div class="card-icon green">🐟</div>
         <div class="card-num">الدرس الأول</div>
         <div class="card-title">الثروة السمكية والاقتصاد القومي</div>
@@ -1083,7 +1087,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('mercy')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('mercy')">
         <div class="card-icon red">🤝</div>
         <div class="card-num">الدرس الثاني</div>
         <div class="card-title">التراحم بين الناس</div>
@@ -1096,7 +1100,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('tolerance')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('tolerance')">
         <div class="card-icon blue">☮️</div>
         <div class="card-num">الدرس الثالث</div>
         <div class="card-title">صور من التسامح الفعلي</div>
@@ -1114,7 +1118,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('quran')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('quran')">
         <div class="card-icon gold">📖</div>
         <div class="card-num">الدرس الأول</div>
         <div class="card-title">التجارة الرابحة — قرآن كريم</div>
@@ -1126,7 +1130,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('poetry1')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('poetry1')">
         <div class="card-icon purple">✍️</div>
         <div class="card-num">الدرس الثاني</div>
         <div class="card-title">ابدأ بنفسك — شعر</div>
@@ -1139,7 +1143,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('poetry2')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('poetry2')">
         <div class="card-icon red">🌟</div>
         <div class="card-num">الدرس الثالث</div>
         <div class="card-title">في المدح — شعر الفرزدق</div>
@@ -1158,7 +1162,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('grammar1')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('grammar1')">
         <div class="card-icon blue">📐</div>
         <div class="card-num">نحو ١</div>
         <div class="card-title">الجملة الفعلية وإعراب المضارع</div>
@@ -1170,7 +1174,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('grammar2')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('grammar2')">
         <div class="card-icon purple">⚡</div>
         <div class="card-num">نحو ٢</div>
         <div class="card-title">الأفعال الخمسة ونائب الفاعل</div>
@@ -1182,7 +1186,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('spelling')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('spelling')">
         <div class="card-icon green">✒️</div>
         <div class="card-num">إملاء</div>
         <div class="card-title">الهمزة المتطرفة</div>
@@ -2141,6 +2145,16 @@ function openExam() {
   renderExamIntro();
   showScreen('exam-page');
 }
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    const target = e.target;
+    if (target && target.matches && target.matches('.lesson-card[role="button"]')) {
+      e.preventDefault();
+      target.click();
+    }
+  }
+});
 
 function renderExamIntro() {
   document.getElementById('exam-timer').textContent = '00:00';

@@ -196,12 +196,15 @@ body {
   z-index: 0;
 }
 
-.lesson-card:hover {
+.lesson-card:hover,
+.lesson-card:focus-visible {
   transform: translateY(-6px) scale(1.02);
   border-color: var(--gold);
   background: rgba(255,255,255,0.12);
   box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 30px rgba(201,168,76,0.3);
   animation: pulseGlow 1.5s infinite;
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 .lesson-card:hover::before,
@@ -289,9 +292,17 @@ body {
   box-shadow: 0 8px 24px rgba(201,168,76,0.3);
 }
 
-.exam-btn:hover {
+.exam-btn:hover,
+.exam-btn:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 16px 40px rgba(201,168,76,0.4);
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 /* ===== LESSON PAGE ===== */
@@ -1071,7 +1082,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('fish')">
+      <div class="lesson-card" tabindex="0" role="button" aria-label="الدرس الأول: الثروة السمكية والاقتصاد القومي" onclick="openLesson('fish')">
         <div class="card-icon green">🐟</div>
         <div class="card-num">الدرس الأول</div>
         <div class="card-title">الثروة السمكية والاقتصاد القومي</div>
@@ -1083,7 +1094,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('mercy')">
+      <div class="lesson-card" tabindex="0" role="button" aria-label="الدرس الثاني: التراحم بين الناس" onclick="openLesson('mercy')">
         <div class="card-icon red">🤝</div>
         <div class="card-num">الدرس الثاني</div>
         <div class="card-title">التراحم بين الناس</div>
@@ -1096,7 +1107,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('tolerance')">
+      <div class="lesson-card" tabindex="0" role="button" aria-label="الدرس الثالث: صور من التسامح الفعلي" onclick="openLesson('tolerance')">
         <div class="card-icon blue">☮️</div>
         <div class="card-num">الدرس الثالث</div>
         <div class="card-title">صور من التسامح الفعلي</div>
@@ -1114,7 +1125,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('quran')">
+      <div class="lesson-card" tabindex="0" role="button" aria-label="الدرس الأول: التجارة الرابحة — قرآن كريم" onclick="openLesson('quran')">
         <div class="card-icon gold">📖</div>
         <div class="card-num">الدرس الأول</div>
         <div class="card-title">التجارة الرابحة — قرآن كريم</div>
@@ -1126,7 +1137,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('poetry1')">
+      <div class="lesson-card" tabindex="0" role="button" aria-label="الدرس الثاني: ابدأ بنفسك — شعر" onclick="openLesson('poetry1')">
         <div class="card-icon purple">✍️</div>
         <div class="card-num">الدرس الثاني</div>
         <div class="card-title">ابدأ بنفسك — شعر</div>
@@ -1139,7 +1150,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('poetry2')">
+      <div class="lesson-card" tabindex="0" role="button" aria-label="الدرس الثالث: في المدح — شعر الفرزدق" onclick="openLesson('poetry2')">
         <div class="card-icon red">🌟</div>
         <div class="card-num">الدرس الثالث</div>
         <div class="card-title">في المدح — شعر الفرزدق</div>
@@ -1158,7 +1169,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('grammar1')">
+      <div class="lesson-card" tabindex="0" role="button" aria-label="نحو ١: الجملة الفعلية وإعراب المضارع" onclick="openLesson('grammar1')">
         <div class="card-icon blue">📐</div>
         <div class="card-num">نحو ١</div>
         <div class="card-title">الجملة الفعلية وإعراب المضارع</div>
@@ -1170,7 +1181,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('grammar2')">
+      <div class="lesson-card" tabindex="0" role="button" aria-label="نحو ٢: الأفعال الخمسة ونائب الفاعل" onclick="openLesson('grammar2')">
         <div class="card-icon purple">⚡</div>
         <div class="card-num">نحو ٢</div>
         <div class="card-title">الأفعال الخمسة ونائب الفاعل</div>
@@ -1182,7 +1193,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('spelling')">
+      <div class="lesson-card" tabindex="0" role="button" aria-label="إملاء: الهمزة المتطرفة" onclick="openLesson('spelling')">
         <div class="card-icon green">✒️</div>
         <div class="card-num">إملاء</div>
         <div class="card-title">الهمزة المتطرفة</div>
@@ -2255,6 +2266,16 @@ function examFinish() {
   examState.done = true;
   renderExamQuestion();
 }
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    const card = e.target.closest('.lesson-card');
+    if (card) {
+      e.preventDefault();
+      card.click();
+    }
+  }
+});
 </script>
 </body>
 </html>

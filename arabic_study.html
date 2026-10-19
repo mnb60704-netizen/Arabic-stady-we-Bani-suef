@@ -1042,6 +1042,18 @@ body {
   top: 0; 
 }
 
+/* Focus visible styles for keyboard accessibility */
+.lesson-card:focus-visible,
+.q-option:focus-visible,
+.nav-back:focus-visible,
+.lesson-tab:focus-visible,
+.exam-btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+  outline: 3px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
 </style>
 </head>
 <body>
@@ -1071,7 +1083,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('fish')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('fish')">
         <div class="card-icon green">🐟</div>
         <div class="card-num">الدرس الأول</div>
         <div class="card-title">الثروة السمكية والاقتصاد القومي</div>
@@ -1083,7 +1095,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('mercy')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('mercy')">
         <div class="card-icon red">🤝</div>
         <div class="card-num">الدرس الثاني</div>
         <div class="card-title">التراحم بين الناس</div>
@@ -1096,7 +1108,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('tolerance')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('tolerance')">
         <div class="card-icon blue">☮️</div>
         <div class="card-num">الدرس الثالث</div>
         <div class="card-title">صور من التسامح الفعلي</div>
@@ -1114,7 +1126,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('quran')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('quran')">
         <div class="card-icon gold">📖</div>
         <div class="card-num">الدرس الأول</div>
         <div class="card-title">التجارة الرابحة — قرآن كريم</div>
@@ -1126,7 +1138,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('poetry1')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('poetry1')">
         <div class="card-icon purple">✍️</div>
         <div class="card-num">الدرس الثاني</div>
         <div class="card-title">ابدأ بنفسك — شعر</div>
@@ -1139,7 +1151,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('poetry2')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('poetry2')">
         <div class="card-icon red">🌟</div>
         <div class="card-num">الدرس الثالث</div>
         <div class="card-title">في المدح — شعر الفرزدق</div>
@@ -1158,7 +1170,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('grammar1')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('grammar1')">
         <div class="card-icon blue">📐</div>
         <div class="card-num">نحو ١</div>
         <div class="card-title">الجملة الفعلية وإعراب المضارع</div>
@@ -1170,7 +1182,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('grammar2')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('grammar2')">
         <div class="card-icon purple">⚡</div>
         <div class="card-num">نحو ٢</div>
         <div class="card-title">الأفعال الخمسة ونائب الفاعل</div>
@@ -1182,7 +1194,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('spelling')">
+      <div class="lesson-card" role="button" tabindex="0" onclick="openLesson('spelling')">
         <div class="card-icon green">✒️</div>
         <div class="card-num">إملاء</div>
         <div class="card-title">الهمزة المتطرفة</div>
@@ -2019,7 +2031,7 @@ function renderQuizHtml() {
       else if (i === s.answers[s.q]) cls += ' wrong';
       cls += ' answered';
     } else if (i === s.answers[s.q]) cls += ' selected';
-    optsHtml += `<div class="${cls}" onclick="selectAnswer(${i})">${o}</div>`;
+    optsHtml += `<div class="${cls}" role="button" tabindex="0" onclick="selectAnswer(${i})">${o}</div>`;
   });
 
   return `
@@ -2079,7 +2091,7 @@ function renderQuiz(container) {
       else if (i === s.answers[s.q]) cls += ' wrong';
       cls += ' answered';
     } else if (i === s.answers[s.q]) cls += ' selected';
-    optsHtml += `<div class="${cls}" onclick="selectAnswer(${i})">${o}</div>`;
+    optsHtml += `<div class="${cls}" role="button" tabindex="0" onclick="selectAnswer(${i})">${o}</div>`;
   });
 
   container.innerHTML = `
@@ -2208,7 +2220,7 @@ function renderExamQuestion() {
       else if (i === s.answers[s.q]) cls += ' wrong';
       cls += ' answered';
     }
-    optsHtml += `<div class="${cls}" onclick="examSelectAnswer(${i})">${o}</div>`;
+    optsHtml += `<div class="${cls}" role="button" tabindex="0" onclick="examSelectAnswer(${i})">${o}</div>`;
   });
 
   document.getElementById('exam-content').innerHTML = `
@@ -2255,6 +2267,17 @@ function examFinish() {
   examState.done = true;
   renderExamQuestion();
 }
+
+// Global Keyboard Navigation Listener for accessibility (Enter and Space keys)
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') {
+    const target = e.target;
+    if (target && (target.classList.contains('lesson-card') || target.classList.contains('q-option'))) {
+      e.preventDefault();
+      target.click();
+    }
+  }
+});
 </script>
 </body>
 </html>

@@ -924,6 +924,15 @@ body {
   50% { transform: translateY(-10px); }
 }
 
+/* Focus Visible States for Keyboard Accessibility */
+button:focus-visible,
+.lesson-card:focus-visible,
+.q-option:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.3);
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--cream2); }
@@ -1071,7 +1080,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('fish')">
+      <div class="lesson-card" onclick="openLesson('fish')" tabindex="0" role="button" aria-label="الدرس الأول: الثروة السمكية والاقتصاد القومي">
         <div class="card-icon green">🐟</div>
         <div class="card-num">الدرس الأول</div>
         <div class="card-title">الثروة السمكية والاقتصاد القومي</div>
@@ -1083,7 +1092,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('mercy')">
+      <div class="lesson-card" onclick="openLesson('mercy')" tabindex="0" role="button" aria-label="الدرس الثاني: التراحم بين الناس">
         <div class="card-icon red">🤝</div>
         <div class="card-num">الدرس الثاني</div>
         <div class="card-title">التراحم بين الناس</div>
@@ -1096,7 +1105,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('tolerance')">
+      <div class="lesson-card" onclick="openLesson('tolerance')" tabindex="0" role="button" aria-label="الدرس الثالث: صور من التسامح الفعلي">
         <div class="card-icon blue">☮️</div>
         <div class="card-num">الدرس الثالث</div>
         <div class="card-title">صور من التسامح الفعلي</div>
@@ -1114,7 +1123,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('quran')">
+      <div class="lesson-card" onclick="openLesson('quran')" tabindex="0" role="button" aria-label="الدرس الأول: التجارة الرابحة — قرآن كريم">
         <div class="card-icon gold">📖</div>
         <div class="card-num">الدرس الأول</div>
         <div class="card-title">التجارة الرابحة — قرآن كريم</div>
@@ -1126,7 +1135,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('poetry1')">
+      <div class="lesson-card" onclick="openLesson('poetry1')" tabindex="0" role="button" aria-label="الدرس الثاني: ابدأ بنفسك — شعر">
         <div class="card-icon purple">✍️</div>
         <div class="card-num">الدرس الثاني</div>
         <div class="card-title">ابدأ بنفسك — شعر</div>
@@ -1139,7 +1148,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('poetry2')">
+      <div class="lesson-card" onclick="openLesson('poetry2')" tabindex="0" role="button" aria-label="الدرس الثالث: في المدح — شعر الفرزدق">
         <div class="card-icon red">🌟</div>
         <div class="card-num">الدرس الثالث</div>
         <div class="card-title">في المدح — شعر الفرزدق</div>
@@ -1158,7 +1167,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('grammar1')">
+      <div class="lesson-card" onclick="openLesson('grammar1')" tabindex="0" role="button" aria-label="نحو ١: الجملة الفعلية وإعراب المضارع">
         <div class="card-icon blue">📐</div>
         <div class="card-num">نحو ١</div>
         <div class="card-title">الجملة الفعلية وإعراب المضارع</div>
@@ -1170,7 +1179,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('grammar2')">
+      <div class="lesson-card" onclick="openLesson('grammar2')" tabindex="0" role="button" aria-label="نحو ٢: الأفعال الخمسة ونائب الفاعل">
         <div class="card-icon purple">⚡</div>
         <div class="card-num">نحو ٢</div>
         <div class="card-title">الأفعال الخمسة ونائب الفاعل</div>
@@ -1182,7 +1191,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('spelling')">
+      <div class="lesson-card" onclick="openLesson('spelling')" tabindex="0" role="button" aria-label="إملاء: الهمزة المتطرفة">
         <div class="card-icon green">✒️</div>
         <div class="card-num">إملاء</div>
         <div class="card-title">الهمزة المتطرفة</div>
@@ -2019,7 +2028,7 @@ function renderQuizHtml() {
       else if (i === s.answers[s.q]) cls += ' wrong';
       cls += ' answered';
     } else if (i === s.answers[s.q]) cls += ' selected';
-    optsHtml += `<div class="${cls}" onclick="selectAnswer(${i})">${o}</div>`;
+    optsHtml += `<div class="${cls}" tabindex="0" role="button" onclick="selectAnswer(${i})">${o}</div>`;
   });
 
   return `
@@ -2079,7 +2088,7 @@ function renderQuiz(container) {
       else if (i === s.answers[s.q]) cls += ' wrong';
       cls += ' answered';
     } else if (i === s.answers[s.q]) cls += ' selected';
-    optsHtml += `<div class="${cls}" onclick="selectAnswer(${i})">${o}</div>`;
+    optsHtml += `<div class="${cls}" tabindex="0" role="button" onclick="selectAnswer(${i})">${o}</div>`;
   });
 
   container.innerHTML = `
@@ -2208,7 +2217,7 @@ function renderExamQuestion() {
       else if (i === s.answers[s.q]) cls += ' wrong';
       cls += ' answered';
     }
-    optsHtml += `<div class="${cls}" onclick="examSelectAnswer(${i})">${o}</div>`;
+    optsHtml += `<div class="${cls}" tabindex="0" role="button" onclick="examSelectAnswer(${i})">${o}</div>`;
   });
 
   document.getElementById('exam-content').innerHTML = `
@@ -2255,6 +2264,14 @@ function examFinish() {
   examState.done = true;
   renderExamQuestion();
 }
+
+document.addEventListener('keydown', (e) => {
+            const el = e.target?.closest?.('.lesson-card, .q-option');
+            if ((e.key === 'Enter' || e.key === ' ') && el) {
+    e.preventDefault();
+                el.click();
+  }
+});
 </script>
 </body>
 </html>

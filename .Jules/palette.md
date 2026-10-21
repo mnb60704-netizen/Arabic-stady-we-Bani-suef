@@ -1,0 +1,3 @@
+## 2025-10-21 - Accessible Custom Interactive Elements in Static Single-Page Applications
+**Learning:** Custom interactive container elements (like `.lesson-card` or `.q-option`) implemented as `<div>`s with `onclick` lack keyboard focusability and activation events by default, excluding keyboard and screen reader users.
+**Action:** When working with non-semantic interactive `<div>` elements, always add `tabindex="0"`, `role="button"`, appropriate `onkeydown` listeners for `Enter` and `Space` keys, and explicit CSS `:focus-visible` outline styles matching the visual design tokens (`var(--gold)`).

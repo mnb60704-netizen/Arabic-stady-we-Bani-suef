@@ -924,6 +924,18 @@ body {
   50% { transform: translateY(-10px); }
 }
 
+/* Focus Visible Styles for Accessibility */
+.lesson-card:focus-visible,
+.lesson-tab:focus-visible,
+.q-option:focus-visible,
+.nav-back:focus-visible,
+.exam-btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--cream2); }
@@ -1071,7 +1083,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('fish')">
+      <div class="lesson-card" tabindex="0" role="button" onclick="openLesson('fish')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLesson('fish');}">
         <div class="card-icon green">🐟</div>
         <div class="card-num">الدرس الأول</div>
         <div class="card-title">الثروة السمكية والاقتصاد القومي</div>
@@ -1083,7 +1095,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('mercy')">
+      <div class="lesson-card" tabindex="0" role="button" onclick="openLesson('mercy')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLesson('mercy');}">
         <div class="card-icon red">🤝</div>
         <div class="card-num">الدرس الثاني</div>
         <div class="card-title">التراحم بين الناس</div>
@@ -1096,7 +1108,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('tolerance')">
+      <div class="lesson-card" tabindex="0" role="button" onclick="openLesson('tolerance')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLesson('tolerance');}">
         <div class="card-icon blue">☮️</div>
         <div class="card-num">الدرس الثالث</div>
         <div class="card-title">صور من التسامح الفعلي</div>
@@ -1114,7 +1126,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('quran')">
+      <div class="lesson-card" tabindex="0" role="button" onclick="openLesson('quran')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLesson('quran');}">
         <div class="card-icon gold">📖</div>
         <div class="card-num">الدرس الأول</div>
         <div class="card-title">التجارة الرابحة — قرآن كريم</div>
@@ -1126,7 +1138,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('poetry1')">
+      <div class="lesson-card" tabindex="0" role="button" onclick="openLesson('poetry1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLesson('poetry1');}">
         <div class="card-icon purple">✍️</div>
         <div class="card-num">الدرس الثاني</div>
         <div class="card-title">ابدأ بنفسك — شعر</div>
@@ -1139,7 +1151,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('poetry2')">
+      <div class="lesson-card" tabindex="0" role="button" onclick="openLesson('poetry2')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLesson('poetry2');}">
         <div class="card-icon red">🌟</div>
         <div class="card-num">الدرس الثالث</div>
         <div class="card-title">في المدح — شعر الفرزدق</div>
@@ -1158,7 +1170,7 @@ body {
         <div class="section-header-line"></div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('grammar1')">
+      <div class="lesson-card" tabindex="0" role="button" onclick="openLesson('grammar1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLesson('grammar1');}">
         <div class="card-icon blue">📐</div>
         <div class="card-num">نحو ١</div>
         <div class="card-title">الجملة الفعلية وإعراب المضارع</div>
@@ -1170,7 +1182,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('grammar2')">
+      <div class="lesson-card" tabindex="0" role="button" onclick="openLesson('grammar2')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLesson('grammar2');}">
         <div class="card-icon purple">⚡</div>
         <div class="card-num">نحو ٢</div>
         <div class="card-title">الأفعال الخمسة ونائب الفاعل</div>
@@ -1182,7 +1194,7 @@ body {
         </div>
       </div>
 
-      <div class="lesson-card" onclick="openLesson('spelling')">
+      <div class="lesson-card" tabindex="0" role="button" onclick="openLesson('spelling')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLesson('spelling');}">
         <div class="card-icon green">✒️</div>
         <div class="card-num">إملاء</div>
         <div class="card-title">الهمزة المتطرفة</div>
@@ -1204,7 +1216,7 @@ body {
 <!-- ========== LESSON PAGE ========== -->
 <div id="lesson-page" class="screen">
   <nav class="lesson-nav">
-    <button class="nav-back" onclick="goHome()">→ الرئيسية</button>
+    <button class="nav-back" onclick="goHome()" aria-label="العودة إلى الصفحة الرئيسية">→ الرئيسية</button>
     <span class="nav-title" id="lesson-nav-title"></span>
     <span class="nav-progress" id="lesson-nav-sub"></span>
   </nav>
@@ -1217,7 +1229,7 @@ body {
 <!-- ========== EXAM PAGE ========== -->
 <div id="exam-page" class="screen">
   <nav class="exam-nav">
-    <button class="nav-back" onclick="goHome()">→ الرئيسية</button>
+    <button class="nav-back" onclick="goHome()" aria-label="العودة إلى الصفحة الرئيسية">→ الرئيسية</button>
     <span class="nav-title" style="color:var(--gold);font-family:'Amiri',serif;font-size:18px;">الامتحان الشامل</span>
     <span class="exam-timer" id="exam-timer">00:00</span>
   </nav>
@@ -2019,7 +2031,7 @@ function renderQuizHtml() {
       else if (i === s.answers[s.q]) cls += ' wrong';
       cls += ' answered';
     } else if (i === s.answers[s.q]) cls += ' selected';
-    optsHtml += `<div class="${cls}" onclick="selectAnswer(${i})">${o}</div>`;
+    optsHtml += `<div class="${cls}" tabindex="0" role="button" onclick="selectAnswer(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectAnswer(${i});}">${o}</div>`;
   });
 
   return `
@@ -2208,7 +2220,7 @@ function renderExamQuestion() {
       else if (i === s.answers[s.q]) cls += ' wrong';
       cls += ' answered';
     }
-    optsHtml += `<div class="${cls}" onclick="examSelectAnswer(${i})">${o}</div>`;
+    optsHtml += `<div class="${cls}" tabindex="0" role="button" onclick="examSelectAnswer(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();examSelectAnswer(${i});}">${o}</div>`;
   });
 
   document.getElementById('exam-content').innerHTML = `
